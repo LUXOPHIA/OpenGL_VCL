@@ -7,8 +7,9 @@ uses
   System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Winapi.OpenGL,
+  System.UITypes,
   Vcl.ExtCtrls,
-  LUX.GPU.OpenGL.VCL.GLView;
+  LUX, LUX.D3, LUX.GPU.OpenGL.GLView;
 
 type
   TForm1 = class(TForm)
@@ -43,24 +44,53 @@ implementation //###############################################################
 /////////////////////////////////////////////////////////////////////// メソッド
 
 procedure TForm1.DrawModel;
+const
+   Ps :array [ 0..7 ] of TSingle3D = ( ( X:-1; Y:-1; Z:-1 ),
+                                       ( X:+1; Y:-1; Z:-1 ),
+                                       ( X:-1; Y:+1; Z:-1 ),
+                                       ( X:+1; Y:+1; Z:-1 ),
+                                       ( X:-1; Y:-1; Z:+1 ),
+                                       ( X:+1; Y:-1; Z:+1 ),
+                                       ( X:-1; Y:+1; Z:+1 ),
+                                       ( X:+1; Y:+1; Z:+1 ) );
+   Cs :array [ 0..7 ] of TAlphaColorF = ( ( R:0; G:0; B:0; A:1 ),
+                                          ( R:1; G:0; B:0; A:1 ),
+                                          ( R:0; G:1; B:0; A:1 ),
+                                          ( R:1; G:1; B:0; A:1 ),
+                                          ( R:0; G:0; B:1; A:1 ),
+                                          ( R:1; G:0; B:1; A:1 ),
+                                          ( R:0; G:1; B:1; A:1 ),
+                                          ( R:1; G:1; B:1; A:1 ) );
+   Fs :array [ 1..6, 1..4 ] of Integer = ( ( 0, 2, 3, 1 ),
+                                           ( 0, 4, 6, 2 ),
+                                           ( 0, 1, 5, 4 ),
+                                           ( 7, 3, 2, 6 ),
+                                           ( 7, 5, 1, 3 ),
+                                           ( 7, 6, 4, 5 ) );
+var
+   N, K, I :Integer;
 begin
-     glBegin( GL_TRIANGLES );
+     //    2-------3
+     //   /|      /|
+     //  6-------7 |
+     //  | |     | |
+     //  | 0-----|-1
+     //  |/      |/
+     //  4-------5
 
-       glColor3f( 1.0, 0.0, 0.0 );  glVertex3f( +1.0, -1.0, +1.0 ); //R
-       glColor3f( 0.0, 1.0, 0.0 );  glVertex3f( +1.0, +1.0, -1.0 ); //G
-       glColor3f( 0.0, 0.0, 1.0 );  glVertex3f( -1.0, +1.0, +1.0 ); //B
+     glBegin( GL_QUADS );
 
-       glColor3f( 1.0, 1.0, 1.0 );  glVertex3f( -1.0, -1.0, -1.0 ); //W
-       glColor3f( 1.0, 0.0, 0.0 );  glVertex3f( +1.0, -1.0, +1.0 ); //R
-       glColor3f( 0.0, 0.0, 1.0 );  glVertex3f( -1.0, +1.0, +1.0 ); //B
+       for N := 1 to 6 do
+       begin
+            for K := 1 to 4 do
+            begin
+                 I := Fs[ N, K ];
 
-       glColor3f( 1.0, 1.0, 1.0 );  glVertex3f( -1.0, -1.0, -1.0 ); //W
-       glColor3f( 0.0, 0.0, 1.0 );  glVertex3f( -1.0, +1.0, +1.0 ); //B
-       glColor3f( 0.0, 1.0, 0.0 );  glVertex3f( +1.0, +1.0, -1.0 ); //G
+                 with Cs[ I ] do glColor3f( R, G, B );
 
-       glColor3f( 1.0, 1.0, 1.0 );  glVertex3f( -1.0, -1.0, -1.0 ); //W
-       glColor3f( 0.0, 1.0, 0.0 );  glVertex3f( +1.0, +1.0, -1.0 ); //G
-       glColor3f( 1.0, 0.0, 0.0 );  glVertex3f( +1.0, -1.0, +1.0 ); //R
+                 with Ps[ I ] do glVertex3f( X, Y, Z );
+            end;
+       end;
 
      glEnd;
 end;
@@ -79,6 +109,7 @@ begin
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
+            glRotatef( +90, 1, 0, 0 );
             glRotatef( _Angle, 0, 1, 0 );
             DrawModel;
      end;
@@ -91,6 +122,7 @@ begin
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
+            glRotatef( -90, 0, 1, 0 );
             glRotatef( _Angle, 0, 1, 0 );
             DrawModel;
      end;
@@ -115,6 +147,8 @@ begin
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
+            glRotatef( +30, 1, 0, 0 );
+            glRotatef( -30, 0, 1, 0 );
             glRotatef( _Angle, 0, 1, 0 );
             DrawModel;
      end;
