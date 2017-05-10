@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'OpenGL_VCL'
-  ClientHeight = 530
-  ClientWidth = 730
+  ClientHeight = 578
+  ClientWidth = 758
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,111 +16,283 @@ object Form1: TForm1
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
-    Left = 0
-    Top = 0
-    Width = 730
-    Height = 215
-    Align = alTop
-    BevelOuter = bvNone
-    TabOrder = 0
-    inline GLView1: TGLView
-      AlignWithMargins = True
-      Left = 10
-      Top = 10
-      Width = 300
-      Height = 200
-      Margins.Left = 10
-      Margins.Top = 10
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Align = alLeft
-      DoubleBuffered = False
-      Color = clGray
-      Ctl3D = True
-      ParentBackground = False
-      ParentColor = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      TabOrder = 0
-      ExplicitLeft = 10
-      ExplicitTop = 10
-      ExplicitWidth = 300
-      ExplicitHeight = 200
-    end
-    inline GLView2: TGLView
-      AlignWithMargins = True
-      Left = 320
-      Top = 10
-      Width = 400
-      Height = 200
-      Margins.Left = 5
-      Margins.Top = 10
-      Margins.Right = 10
-      Margins.Bottom = 5
-      Align = alClient
-      DoubleBuffered = False
-      Color = clGray
-      Ctl3D = True
-      ParentBackground = False
-      ParentColor = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      TabOrder = 1
-      ExplicitLeft = 320
-      ExplicitTop = 10
-      ExplicitHeight = 200
-    end
-  end
-  inline GLView3: TGLView
+  object PageControl1: TPageControl
     AlignWithMargins = True
     Left = 10
-    Top = 220
-    Width = 300
-    Height = 300
+    Top = 10
+    Width = 738
+    Height = 558
     Margins.Left = 10
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 10
-    Align = alLeft
-    DoubleBuffered = False
-    Color = clGray
-    Ctl3D = True
-    ParentBackground = False
-    ParentColor = False
-    ParentCtl3D = False
-    ParentDoubleBuffered = False
-    TabOrder = 1
-    ExplicitLeft = 10
-    ExplicitTop = 220
-    ExplicitWidth = 300
-  end
-  inline GLView4: TGLView
-    AlignWithMargins = True
-    Left = 320
-    Top = 220
-    Width = 400
-    Height = 300
-    Margins.Left = 5
-    Margins.Top = 5
+    Margins.Top = 10
     Margins.Right = 10
     Margins.Bottom = 10
+    ActivePage = TabSheetV
     Align = alClient
-    DoubleBuffered = False
-    Color = clGray
-    Ctl3D = True
-    ParentBackground = False
-    ParentColor = False
-    ParentCtl3D = False
-    ParentDoubleBuffered = False
-    TabOrder = 2
-    ExplicitLeft = 320
-    ExplicitTop = 220
+    TabOrder = 0
+    object TabSheetV: TTabSheet
+      Caption = 'View'
+      ExplicitWidth = 281
+      ExplicitHeight = 165
+      inline GLView3: TGLView
+        AlignWithMargins = True
+        Left = 10
+        Top = 220
+        Width = 300
+        Height = 300
+        Margins.Left = 10
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 10
+        Align = alLeft
+        DoubleBuffered = False
+        Color = clGray
+        Ctl3D = True
+        ParentBackground = False
+        ParentColor = False
+        ParentCtl3D = False
+        ParentDoubleBuffered = False
+        TabOrder = 0
+        ExplicitLeft = 10
+        ExplicitTop = 5
+        ExplicitWidth = 300
+        ExplicitHeight = 150
+      end
+      inline GLView4: TGLView
+        AlignWithMargins = True
+        Left = 320
+        Top = 220
+        Width = 400
+        Height = 300
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 10
+        Margins.Bottom = 10
+        Align = alClient
+        DoubleBuffered = False
+        Color = clGray
+        Ctl3D = True
+        ParentBackground = False
+        ParentColor = False
+        ParentCtl3D = False
+        ParentDoubleBuffered = False
+        TabOrder = 1
+        ExplicitLeft = 320
+        ExplicitTop = 5
+        ExplicitWidth = 715
+        ExplicitHeight = 150
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 730
+        Height = 215
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 2
+        ExplicitTop = -50
+        ExplicitWidth = 281
+        inline GLView1: TGLView
+          AlignWithMargins = True
+          Left = 10
+          Top = 10
+          Width = 300
+          Height = 200
+          Margins.Left = 10
+          Margins.Top = 10
+          Margins.Right = 5
+          Margins.Bottom = 5
+          Align = alLeft
+          DoubleBuffered = False
+          Color = clGray
+          Ctl3D = True
+          ParentBackground = False
+          ParentColor = False
+          ParentCtl3D = False
+          ParentDoubleBuffered = False
+          TabOrder = 0
+          ExplicitLeft = 10
+          ExplicitTop = 10
+          ExplicitWidth = 300
+          ExplicitHeight = 200
+        end
+        inline GLView2: TGLView
+          AlignWithMargins = True
+          Left = 320
+          Top = 10
+          Width = 400
+          Height = 200
+          Margins.Left = 5
+          Margins.Top = 10
+          Margins.Right = 10
+          Margins.Bottom = 5
+          Align = alClient
+          DoubleBuffered = False
+          Color = clGray
+          Ctl3D = True
+          ParentBackground = False
+          ParentColor = False
+          ParentCtl3D = False
+          ParentDoubleBuffered = False
+          TabOrder = 1
+          ExplicitLeft = 320
+          ExplicitTop = 10
+          ExplicitHeight = 200
+        end
+      end
+    end
+    object TabSheetP: TTabSheet
+      Caption = 'Program'
+      ImageIndex = 1
+      ExplicitWidth = 281
+      ExplicitHeight = 165
+      object MemoP: TMemo
+        AlignWithMargins = True
+        Left = 10
+        Top = 10
+        Width = 710
+        Height = 510
+        Margins.Left = 10
+        Margins.Top = 10
+        Margins.Right = 10
+        Margins.Bottom = 10
+        Align = alClient
+        TabOrder = 0
+        ExplicitLeft = 55
+        ExplicitTop = 40
+        ExplicitWidth = 311
+        ExplicitHeight = 301
+      end
+    end
+    object TabSheetS: TTabSheet
+      Caption = 'Shader'
+      ImageIndex = 2
+      ExplicitWidth = 281
+      ExplicitHeight = 165
+      object PageControlS: TPageControl
+        AlignWithMargins = True
+        Left = 10
+        Top = 10
+        Width = 710
+        Height = 510
+        Margins.Left = 10
+        Margins.Top = 10
+        Margins.Right = 10
+        Margins.Bottom = 10
+        ActivePage = TabSheetSV
+        Align = alClient
+        TabOrder = 0
+        object TabSheetSV: TTabSheet
+          Caption = 'Vertex'
+          object PageControlSV: TPageControl
+            AlignWithMargins = True
+            Left = 10
+            Top = 10
+            Width = 682
+            Height = 462
+            Margins.Left = 10
+            Margins.Top = 10
+            Margins.Right = 10
+            Margins.Bottom = 10
+            ActivePage = TabSheetSVS
+            Align = alClient
+            TabOrder = 0
+            object TabSheetSVS: TTabSheet
+              Caption = 'Source'
+              object MemoSVS: TMemo
+                AlignWithMargins = True
+                Left = 10
+                Top = 10
+                Width = 654
+                Height = 414
+                Margins.Left = 10
+                Margins.Top = 10
+                Margins.Right = 10
+                Margins.Bottom = 10
+                Align = alClient
+                TabOrder = 0
+                ExplicitLeft = 15
+                ExplicitTop = 15
+              end
+            end
+            object TabSheetSVE: TTabSheet
+              Caption = 'Error'
+              ImageIndex = 1
+              object MemoSVE: TMemo
+                AlignWithMargins = True
+                Left = 10
+                Top = 10
+                Width = 654
+                Height = 414
+                Margins.Left = 10
+                Margins.Top = 10
+                Margins.Right = 10
+                Margins.Bottom = 10
+                Align = alClient
+                TabOrder = 0
+                ExplicitLeft = 15
+                ExplicitTop = 15
+              end
+            end
+          end
+        end
+        object TabSheetSF: TTabSheet
+          Caption = 'Fragment'
+          ImageIndex = 1
+          object PageControlSF: TPageControl
+            AlignWithMargins = True
+            Left = 10
+            Top = 10
+            Width = 682
+            Height = 462
+            Margins.Left = 10
+            Margins.Top = 10
+            Margins.Right = 10
+            Margins.Bottom = 10
+            ActivePage = TabSheetSFS
+            Align = alClient
+            TabOrder = 0
+            object TabSheetSFS: TTabSheet
+              Caption = 'Source'
+              object MemoSFS: TMemo
+                AlignWithMargins = True
+                Left = 10
+                Top = 10
+                Width = 654
+                Height = 414
+                Margins.Left = 10
+                Margins.Top = 10
+                Margins.Right = 10
+                Margins.Bottom = 10
+                Align = alClient
+                TabOrder = 0
+              end
+            end
+            object TabSheetSFE: TTabSheet
+              Caption = 'Error'
+              ImageIndex = 1
+              object MemoSFE: TMemo
+                AlignWithMargins = True
+                Left = 10
+                Top = 10
+                Width = 654
+                Height = 414
+                Margins.Left = 10
+                Margins.Top = 10
+                Margins.Right = 10
+                Margins.Bottom = 10
+                Align = alClient
+                TabOrder = 0
+              end
+            end
+          end
+        end
+      end
+    end
   end
   object Timer1: TTimer
     Interval = 10
     OnTimer = Timer1Timer
-    Left = 25
-    Top = 25
+    Left = 70
+    Top = 125
   end
 end

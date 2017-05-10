@@ -8,16 +8,34 @@ uses
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Winapi.OpenGL, Winapi.OpenGLext,
   System.UITypes,
-  Vcl.ExtCtrls,
+  Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
   LUX, LUX.D3, LUX.GPU.OpenGL, LUX.GPU.OpenGL.Shader, LUX.GPU.OpenGL.GLView;
 
 type
   TForm1 = class(TForm)
-    Panel1: TPanel;
-      GLView1: TGLView;
-      GLView2: TGLView;
-      GLView3: TGLView;
-      GLView4: TGLView;
+    PageControl1: TPageControl;
+      TabSheetV: TTabSheet;
+        Panel1: TPanel;
+          GLView1: TGLView;
+          GLView2: TGLView;
+        GLView3: TGLView;
+        GLView4: TGLView;
+      TabSheetP: TTabSheet;
+        MemoP: TMemo;
+      TabSheetS: TTabSheet;
+        PageControlS: TPageControl;
+          TabSheetSV: TTabSheet;
+            PageControlSV: TPageControl;
+              TabSheetSVS: TTabSheet;
+                MemoSVS: TMemo;
+              TabSheetSVE: TTabSheet;
+                MemoSVE: TMemo;
+          TabSheetSF: TTabSheet;
+            PageControlSF: TPageControl;
+              TabSheetSFS: TTabSheet;
+                MemoSFS: TMemo;
+              TabSheetSFE: TTabSheet;
+                MemoSFE: TMemo;
     Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -84,6 +102,8 @@ begin
      //  |/      |/
      //  4-------5
 
+     ///// バッファ
+
      with _BufV do
      begin
           Count := 8;
@@ -111,8 +131,37 @@ begin
           Unbind;
      end;
 
-     _ShaV.LoadFromFile( '..\..\_DATA\ShaderV.glsl' );
-     _ShaF.LoadFromFile( '..\..\_DATA\ShaderF.glsl' );
+     ///// シェーダ
+
+     with _ShaV do
+     begin
+          LoadFromFile( '..\..\_DATA\ShaderV.glsl' );
+
+          MemoSVS.Lines.Text := Source;
+          MemoSVE.Lines.Text := Error;
+
+          if not Success then
+          begin
+               PageControlS .TabIndex := 0;
+               PageControlSV.TabIndex := 1;
+          end;
+     end;
+
+     with _ShaF do
+     begin
+          LoadFromFile( '..\..\_DATA\ShaderF.glsl' );
+
+          MemoSFS.Lines.Text := Source;
+          MemoSFE.Lines.Text := Error;
+
+          if not Success then
+          begin
+               PageControlS .TabIndex := 1;
+               PageControlSF.TabIndex := 1;
+          end;
+     end;
+
+     ///// プログラム
 
      with _Prog do
      begin
@@ -120,6 +169,10 @@ begin
           Attach( _ShaF );
 
           Link;
+
+          MemoP.Lines.Text := Error;
+
+          if not Success then PageControl1.TabIndex := 1;
      end;
 end;
 
