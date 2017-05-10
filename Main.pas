@@ -174,9 +174,8 @@ begin
      begin
           Bind;
 
-            _Prog.Use;
-
             glEnableClientState( GL_VERTEX_ARRAY );
+            glEnableClientState( GL_COLOR_ARRAY  );
 
             with _BufV do
             begin
@@ -184,8 +183,6 @@ begin
                    glVertexPointer( 3, GL_FLOAT, 0, nil );
                  Unbind;
             end;
-
-            glEnableClientState( GL_COLOR_ARRAY  );
 
             with _BufC do
             begin
@@ -195,6 +192,8 @@ begin
             end;
 
             _BufF.Bind;
+
+            _Prog.Use;
 
           Unbind;
      end;
