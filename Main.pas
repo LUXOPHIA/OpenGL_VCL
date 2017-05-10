@@ -33,6 +33,7 @@ type
     _ShaV :TGLShaderV;
     _ShaF :TGLShaderF;
     _Prog :TGLProgram;
+    _Arra :TGLArray;
     ///// メソッド
     procedure MakeModel;
     procedure DrawModel;
@@ -121,7 +122,7 @@ begin
           begin
                BeginUpdate;
 
-               Add( '#version 120' );
+               Add( '#version 130' );
                Add( 'void main()' );
                Add( '{' );
                Add( '  gl_Position   = gl_ModelViewProjectionMatrix * gl_Vertex;' );
@@ -140,7 +141,7 @@ begin
           begin
                BeginUpdate;
 
-               Add( '#version 120' );
+               Add( '#version 130' );
                Add( 'void main()' );
                Add( '{' );
                Add( '  gl_FragColor = gl_Color;' );
@@ -163,34 +164,49 @@ begin
 
           Assert( Success, Error.Text );
      end;
+
+     ///// アレイ
+
+     with _Arra do
+     begin
+          Bind;
+
+            _Prog.Use;
+
+            glEnableClientState( GL_VERTEX_ARRAY );
+
+            with _BufV do
+            begin
+                 Bind;
+                   glVertexPointer( 3, GL_FLOAT, 0, nil );
+                 Unbind;
+            end;
+
+            glEnableClientState( GL_COLOR_ARRAY  );
+
+            with _BufC do
+            begin
+                 Bind;
+                   glColorPointer( 4, GL_FLOAT, 0, nil );
+                 Unbind;
+            end;
+
+            _BufF.Bind;
+
+          Unbind;
+     end;
 end;
 
 procedure TForm1.DrawModel;                                                     { OpenGL 2.1 - GLSL 1.2 }
 begin
-     _Prog.Use;
-
-     with _BufV do
+     with _Arra do
      begin
           Bind;
-            glVertexPointer( 3, GL_FLOAT, 0, nil );
-          Unbind;
-     end;
 
-     with _BufC do
-     begin
-          Bind;
-            glColorPointer( 4, GL_FLOAT, 0, nil );
-          Unbind;
-     end;
-
-     with _BufF do
-     begin
-          Bind;
             glDrawElements( GL_TRIANGLES, 3{Poin} * 12{Face}, GL_UNSIGNED_INT, nil );
+
           Unbind;
      end;
-
-     _Prog.Unuse;
 end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -199,9 +215,6 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
      _Angle := 0;
 
-     glEnableClientState( GL_VERTEX_ARRAY );
-     glEnableClientState( GL_COLOR_ARRAY  );
-
      _BufV := TGLBuffer<TSingle3D>   .Create( GL_ARRAY_BUFFER         );
      _BufC := TGLBuffer<TAlphaColorF>.Create( GL_ARRAY_BUFFER         );
      _BufF := TGLBuffer<Cardinal>    .Create( GL_ELEMENT_ARRAY_BUFFER );
@@ -209,6 +222,8 @@ begin
      _ShaV := TGLShaderV.Create;
      _ShaF := TGLShaderF.Create;
      _Prog := TGLProgram.Create;
+
+     _Arra := TGLArray.Create;
 
      MakeModel;
 
@@ -267,6 +282,8 @@ end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
+     _Arra.DisposeOf;
+
      _ShaV.DisposeOf;
      _ShaF.DisposeOf;
      _Prog.DisposeOf;
