@@ -45,9 +45,9 @@ type
     _Angle :Single;
   public
     { Public 宣言 }
-    _BufV :TGLBuffer<TSingle3D>;
-    _BufC :TGLBuffer<TAlphaColorF>;
-    _BufF :TGLBuffer<Cardinal>;
+    _BufV :TGLBufferV<TSingle3D>;
+    _BufC :TGLBufferV<TAlphaColorF>;
+    _BufF :TGLBufferI<Cardinal>;
     _ShaV :TGLShaderV;
     _ShaF :TGLShaderF;
     _Prog :TGLProgram;
@@ -220,9 +220,9 @@ const
 begin
      _Angle := 0;
 
-     _BufV := TGLBuffer<TSingle3D>   .Create( GL_ARRAY_BUFFER         );
-     _BufC := TGLBuffer<TAlphaColorF>.Create( GL_ARRAY_BUFFER         );
-     _BufF := TGLBuffer<Cardinal>    .Create( GL_ELEMENT_ARRAY_BUFFER );
+     _BufV := TGLBufferV<TSingle3D>   .Create;
+     _BufC := TGLBufferV<TAlphaColorF>.Create;
+     _BufF := TGLBufferI<Cardinal>    .Create;
 
      _ShaV := TGLShaderV.Create;
      _ShaF := TGLShaderF.Create;
