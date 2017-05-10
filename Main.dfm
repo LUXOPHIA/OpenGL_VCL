@@ -31,8 +31,6 @@ object Form1: TForm1
     TabOrder = 0
     object TabSheetV: TTabSheet
       Caption = 'View'
-      ExplicitWidth = 281
-      ExplicitHeight = 165
       inline GLView3: TGLView
         AlignWithMargins = True
         Left = 10
@@ -53,9 +51,8 @@ object Form1: TForm1
         ParentDoubleBuffered = False
         TabOrder = 0
         ExplicitLeft = 10
-        ExplicitTop = 5
+        ExplicitTop = 220
         ExplicitWidth = 300
-        ExplicitHeight = 150
       end
       inline GLView4: TGLView
         AlignWithMargins = True
@@ -77,9 +74,7 @@ object Form1: TForm1
         ParentDoubleBuffered = False
         TabOrder = 1
         ExplicitLeft = 320
-        ExplicitTop = 5
-        ExplicitWidth = 715
-        ExplicitHeight = 150
+        ExplicitTop = 220
       end
       object Panel1: TPanel
         Left = 0
@@ -89,8 +84,6 @@ object Form1: TForm1
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 2
-        ExplicitTop = -50
-        ExplicitWidth = 281
         inline GLView1: TGLView
           AlignWithMargins = True
           Left = 10
@@ -143,6 +136,8 @@ object Form1: TForm1
     object TabSheetP: TTabSheet
       Caption = 'Program'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 281
       ExplicitHeight = 165
       object MemoP: TMemo
@@ -166,6 +161,8 @@ object Form1: TForm1
     object TabSheetS: TTabSheet
       Caption = 'Shader'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 281
       ExplicitHeight = 165
       object PageControlS: TPageControl
@@ -183,6 +180,10 @@ object Form1: TForm1
         TabOrder = 0
         object TabSheetSV: TTabSheet
           Caption = 'Vertex'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object PageControlSV: TPageControl
             AlignWithMargins = True
             Left = 10
@@ -198,6 +199,10 @@ object Form1: TForm1
             TabOrder = 0
             object TabSheetSVS: TTabSheet
               Caption = 'Source'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object MemoSVS: TMemo
                 AlignWithMargins = True
                 Left = 10
@@ -217,6 +222,10 @@ object Form1: TForm1
             object TabSheetSVE: TTabSheet
               Caption = 'Error'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object MemoSVE: TMemo
                 AlignWithMargins = True
                 Left = 10
@@ -238,6 +247,10 @@ object Form1: TForm1
         object TabSheetSF: TTabSheet
           Caption = 'Fragment'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object PageControlSF: TPageControl
             AlignWithMargins = True
             Left = 10
@@ -253,6 +266,10 @@ object Form1: TForm1
             TabOrder = 0
             object TabSheetSFS: TTabSheet
               Caption = 'Source'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object MemoSFS: TMemo
                 AlignWithMargins = True
                 Left = 10
@@ -270,6 +287,10 @@ object Form1: TForm1
             object TabSheetSFE: TTabSheet
               Caption = 'Error'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object MemoSFE: TMemo
                 AlignWithMargins = True
                 Left = 10
