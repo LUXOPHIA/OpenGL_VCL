@@ -9,7 +9,7 @@ uses
   Winapi.OpenGL, Winapi.OpenGLext,
   System.UITypes,
   Vcl.ExtCtrls,
-  LUX, LUX.D3, LUX.GPU.OpenGL, LUX.GPU.OpenGL.GLView;
+  LUX, LUX.D3, LUX.GPU.OpenGL, LUX.GPU.OpenGL.Shader, LUX.GPU.OpenGL.GLView;
 
 type
   TForm1 = class(TForm)
@@ -111,32 +111,8 @@ begin
           Unbind;
      end;
 
-     with TStringList.Create do
-     begin
-          Add( '#version 120' );
-          Add( 'void main()' );
-          Add( '{' );
-          Add( '  gl_Position   = gl_ModelViewProjectionMatrix * gl_Vertex;' );
-          Add( '  gl_FrontColor = gl_Color;' );
-          Add( '}' );
-
-          _ShaV.SetSource( Text );
-
-          DisposeOf;
-     end;
-
-     with TStringList.Create do
-     begin
-          Add( '#version 120' );
-          Add( 'void main()' );
-          Add( '{' );
-          Add( '  gl_FragColor = gl_Color;' );
-          Add( '}' );
-
-          _ShaF.SetSource( Text );
-
-          DisposeOf;
-     end;
+     _ShaV.LoadFromFile( '..\..\_DATA\ShaderV.glsl' );
+     _ShaF.LoadFromFile( '..\..\_DATA\ShaderF.glsl' );
 
      with _Prog do
      begin
