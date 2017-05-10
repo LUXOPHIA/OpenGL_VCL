@@ -9,15 +9,15 @@ uses
   Winapi.OpenGL, Winapi.OpenGLext,
   System.UITypes,
   Vcl.ExtCtrls,
-  LUX, LUX.D3, LUX.GPU.OpenGL, LUX.GPU.OpenGL.GLView;
+  LUX, LUX.D3, LUX.GPU.OpenGL.Shader, LUX.GPU.OpenGL.GLView;
 
 type
   TForm1 = class(TForm)
     Panel1: TPanel;
       GLView1: TGLView;
       GLView2: TGLView;
-      GLView3: TGLView;
-      GLView4: TGLView;
+    GLView3: TGLView;
+    GLView4: TGLView;
     Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -84,6 +84,8 @@ begin
      //  |/      |/
      //  4-------5
 
+     ///// バッファー
+
      with _BufV do
      begin
           Count := 8;
@@ -111,32 +113,46 @@ begin
           Unbind;
      end;
 
-     with TStringList.Create do
+     ///// シェーダー
+
+     with _ShaV do
      begin
-          Add( '#version 120' );
-          Add( 'void main()' );
-          Add( '{' );
-          Add( '  gl_Position   = gl_ModelViewProjectionMatrix * gl_Vertex;' );
-          Add( '  gl_FrontColor = gl_Color;' );
-          Add( '}' );
+          with Source do
+          begin
+               BeginUpdate;
 
-          _ShaV.SetSource( Text );
+               Add( '#version 120' );
+               Add( 'void main()' );
+               Add( '{' );
+               Add( '  gl_Position   = gl_ModelViewProjectionMatrix * gl_Vertex;' );
+               Add( '  gl_FrontColor = gl_Color;' );
+               Add( '}' );
 
-          DisposeOf;
+               EndUpdate;
+          end;
+
+          Assert( Success, Error.Text );
      end;
 
-     with TStringList.Create do
+     with _ShaF do
      begin
-          Add( '#version 120' );
-          Add( 'void main()' );
-          Add( '{' );
-          Add( '  gl_FragColor = gl_Color;' );
-          Add( '}' );
+          with Source do
+          begin
+               BeginUpdate;
 
-          _ShaF.SetSource( Text );
+               Add( '#version 120' );
+               Add( 'void main()' );
+               Add( '{' );
+               Add( '  gl_FragColor = gl_Color;' );
+               Add( '}' );
 
-          DisposeOf;
+               EndUpdate;
+          end;
+
+          Assert( Success, Error.Text );
      end;
+
+     ///// プログラム
 
      with _Prog do
      begin
@@ -144,6 +160,8 @@ begin
           Attach( _ShaF );
 
           Link;
+
+          Assert( Success, Error.Text );
      end;
 end;
 
@@ -171,6 +189,8 @@ begin
             glDrawElements( GL_TRIANGLES, 3{Poin} * 12{Face}, GL_UNSIGNED_INT, nil );
           Unbind;
      end;
+
+     _Prog.Unuse;
 end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
