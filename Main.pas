@@ -72,28 +72,28 @@ implementation //###############################################################
 
 procedure TForm1.MakeModel;
 const
-     Ps :array [ 1..8 ] of TSingle3D = ( ( X:-1; Y:-1; Z:-1 ),
-                                         ( X:+1; Y:-1; Z:-1 ),
-                                         ( X:-1; Y:+1; Z:-1 ),
-                                         ( X:+1; Y:+1; Z:-1 ),
-                                         ( X:-1; Y:-1; Z:+1 ),
-                                         ( X:+1; Y:-1; Z:+1 ),
-                                         ( X:-1; Y:+1; Z:+1 ),
-                                         ( X:+1; Y:+1; Z:+1 ) );
-     Cs :array [ 1..8 ] of TAlphaColorF = ( ( R:0; G:0; B:0; A:1 ),
-                                            ( R:1; G:0; B:0; A:1 ),
-                                            ( R:0; G:1; B:0; A:1 ),
-                                            ( R:1; G:1; B:0; A:1 ),
-                                            ( R:0; G:0; B:1; A:1 ),
-                                            ( R:1; G:0; B:1; A:1 ),
-                                            ( R:0; G:1; B:1; A:1 ),
-                                            ( R:1; G:1; B:1; A:1 ) );
-     Fs :array [ 1..12 ] of TCardinal3D = ( ( _1:0; _2:4; _3:6 ), ( _1:6; _2:2; _3:0 ),
-                                            ( _1:0; _2:1; _3:5 ), ( _1:5; _2:4; _3:0 ),
-                                            ( _1:0; _2:2; _3:3 ), ( _1:3; _2:1; _3:0 ),
-                                            ( _1:7; _2:5; _3:1 ), ( _1:1; _2:3; _3:7 ),
-                                            ( _1:7; _2:3; _3:2 ), ( _1:2; _2:6; _3:7 ),
-                                            ( _1:7; _2:6; _3:4 ), ( _1:4; _2:5; _3:7 ) );
+     Ps :array [ 0..8-1 ] of TSingle3D = ( ( X:-1; Y:-1; Z:-1 ),
+                                           ( X:+1; Y:-1; Z:-1 ),
+                                           ( X:-1; Y:+1; Z:-1 ),
+                                           ( X:+1; Y:+1; Z:-1 ),
+                                           ( X:-1; Y:-1; Z:+1 ),
+                                           ( X:+1; Y:-1; Z:+1 ),
+                                           ( X:-1; Y:+1; Z:+1 ),
+                                           ( X:+1; Y:+1; Z:+1 ) );
+     Cs :array [ 0..8-1 ] of TAlphaColorF = ( ( R:0; G:0; B:0; A:1 ),
+                                              ( R:1; G:0; B:0; A:1 ),
+                                              ( R:0; G:1; B:0; A:1 ),
+                                              ( R:1; G:1; B:0; A:1 ),
+                                              ( R:0; G:0; B:1; A:1 ),
+                                              ( R:1; G:0; B:1; A:1 ),
+                                              ( R:0; G:1; B:1; A:1 ),
+                                              ( R:1; G:1; B:1; A:1 ) );
+     Fs :array [ 0..12-1 ] of TCardinal3D = ( ( _1:0; _2:4; _3:6 ), ( _1:6; _2:2; _3:0 ),
+                                              ( _1:0; _2:1; _3:5 ), ( _1:5; _2:4; _3:0 ),
+                                              ( _1:0; _2:2; _3:3 ), ( _1:3; _2:1; _3:0 ),
+                                              ( _1:7; _2:5; _3:1 ), ( _1:1; _2:3; _3:7 ),
+                                              ( _1:7; _2:3; _3:2 ), ( _1:2; _2:6; _3:7 ),
+                                              ( _1:7; _2:6; _3:4 ), ( _1:4; _2:5; _3:7 ) );
 begin
      //    2-------3
      //   /|      /|
@@ -140,7 +140,7 @@ begin
 
           Link;
 
-          MemoP.Lines.Assign( Error  );
+          MemoP.Lines.Assign( Error );
 
           if not Success then PageControl1.TabIndex := 1;
      end;
@@ -192,8 +192,8 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 const
-     MIND :Single = 0.1;
-     MAXD :Single = 1000;
+     C0 :Single = 0.1;
+     C1 :Single = 1000;
 begin
      _Angle := 0;
 
@@ -213,7 +213,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -3, +3, -2, +2, MIND, MAXD );
+            glOrtho( -3, +3, -2, +2, C0, C1 );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -226,7 +226,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -4, +4, -2, +2, MIND, MAXD );
+            glOrtho( -4, +4, -2, +2, C0, C1 );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -239,7 +239,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -3, +3, -3, +3, MIND, MAXD );
+            glOrtho( -3, +3, -3, +3, C0, C1 );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -251,8 +251,8 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glFrustum( -4/8*MIND, +4/8*MIND,
-                       -3/8*MIND, +3/8*MIND, MIND, MAXD );
+            glFrustum( -4/8*C0, +4/8*C0,
+                       -3/8*C0, +3/8*C0, C0, C1 );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -8 );
