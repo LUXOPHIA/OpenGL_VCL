@@ -136,10 +136,6 @@ object Form1: TForm1
     object TabSheetS: TTabSheet
       Caption = 'Shader'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PageControlS: TPageControl
         AlignWithMargins = True
         Left = 10
@@ -155,10 +151,6 @@ object Form1: TForm1
         TabOrder = 0
         object TabSheetSV: TTabSheet
           Caption = 'Vertex'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object SplitterSV: TSplitter
             Left = 0
             Top = 362
@@ -167,6 +159,7 @@ object Form1: TForm1
             Cursor = crVSplit
             Align = alBottom
             Color = clWhite
+            MinSize = 50
             ParentColor = False
             ResizeStyle = rsUpdate
             ExplicitTop = 359
@@ -197,18 +190,11 @@ object Form1: TForm1
             Margins.Bottom = 0
             Align = alClient
             TabOrder = 1
-            ExplicitLeft = 395
-            ExplicitWidth = 297
-            ExplicitHeight = 462
           end
         end
         object TabSheetSF: TTabSheet
           Caption = 'Fragment'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object SplitterSF: TSplitter
             Left = 0
             Top = 362
@@ -217,6 +203,7 @@ object Form1: TForm1
             Cursor = crVSplit
             Align = alBottom
             Color = clWhite
+            MinSize = 50
             ParentColor = False
             ResizeStyle = rsUpdate
             ExplicitTop = 300
@@ -234,7 +221,6 @@ object Form1: TForm1
             Align = alBottom
             ReadOnly = True
             TabOrder = 0
-            ExplicitTop = 10
           end
           object MemoSFS: TMemo
             AlignWithMargins = True
@@ -248,8 +234,6 @@ object Form1: TForm1
             Margins.Bottom = 0
             Align = alClient
             TabOrder = 1
-            ExplicitWidth = 654
-            ExplicitHeight = 0
           end
         end
       end
@@ -257,10 +241,6 @@ object Form1: TForm1
     object TabSheetP: TTabSheet
       Caption = 'Program'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object MemoP: TMemo
         AlignWithMargins = True
         Left = 10
