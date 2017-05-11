@@ -31,10 +31,6 @@ object Form1: TForm1
     TabOrder = 0
     object TabSheetV: TTabSheet
       Caption = 'View'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       inline GLView3: TGLView
         AlignWithMargins = True
         Left = 10
@@ -140,10 +136,6 @@ object Form1: TForm1
     object TabSheetP: TTabSheet
       Caption = 'Program'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 281
-      ExplicitHeight = 165
       object MemoP: TMemo
         AlignWithMargins = True
         Left = 10
@@ -155,20 +147,13 @@ object Form1: TForm1
         Margins.Right = 10
         Margins.Bottom = 10
         Align = alClient
+        ReadOnly = True
         TabOrder = 0
-        ExplicitLeft = 55
-        ExplicitTop = 40
-        ExplicitWidth = 311
-        ExplicitHeight = 301
       end
     end
     object TabSheetS: TTabSheet
       Caption = 'Shader'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 281
-      ExplicitHeight = 165
       object PageControlS: TPageControl
         AlignWithMargins = True
         Left = 10
@@ -184,10 +169,6 @@ object Form1: TForm1
         TabOrder = 0
         object TabSheetSV: TTabSheet
           Caption = 'Vertex'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object PageControlSV: TPageControl
             AlignWithMargins = True
             Left = 10
@@ -203,10 +184,6 @@ object Form1: TForm1
             TabOrder = 0
             object TabSheetSVS: TTabSheet
               Caption = 'Source'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object MemoSVS: TMemo
                 AlignWithMargins = True
                 Left = 10
@@ -219,17 +196,11 @@ object Form1: TForm1
                 Margins.Bottom = 10
                 Align = alClient
                 TabOrder = 0
-                ExplicitLeft = 15
-                ExplicitTop = 15
               end
             end
             object TabSheetSVE: TTabSheet
               Caption = 'Error'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object MemoSVE: TMemo
                 AlignWithMargins = True
                 Left = 10
@@ -241,9 +212,8 @@ object Form1: TForm1
                 Margins.Right = 10
                 Margins.Bottom = 10
                 Align = alClient
+                ReadOnly = True
                 TabOrder = 0
-                ExplicitLeft = 15
-                ExplicitTop = 15
               end
             end
           end
@@ -251,10 +221,6 @@ object Form1: TForm1
         object TabSheetSF: TTabSheet
           Caption = 'Fragment'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object PageControlSF: TPageControl
             AlignWithMargins = True
             Left = 10
@@ -270,10 +236,6 @@ object Form1: TForm1
             TabOrder = 0
             object TabSheetSFS: TTabSheet
               Caption = 'Source'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object MemoSFS: TMemo
                 AlignWithMargins = True
                 Left = 10
@@ -291,10 +253,6 @@ object Form1: TForm1
             object TabSheetSFE: TTabSheet
               Caption = 'Error'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object MemoSFE: TMemo
                 AlignWithMargins = True
                 Left = 10
@@ -306,6 +264,7 @@ object Form1: TForm1
                 Margins.Right = 10
                 Margins.Bottom = 10
                 Align = alClient
+                ReadOnly = True
                 TabOrder = 0
               end
             end
