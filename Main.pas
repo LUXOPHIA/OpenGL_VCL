@@ -50,7 +50,7 @@ begin
      glEnableClientState( GL_COLOR_ARRAY  );
 end;
 
-procedure TForm1.DrawModel;                                                     { OpenGL 1.1 (1997) }
+procedure TForm1.DrawModel;
 const
      Ps :array [ 0..8-1 ] of TSingle3D = ( ( X:-1; Y:-1; Z:-1 ),
                                            ( X:+1; Y:-1; Z:-1 ),
