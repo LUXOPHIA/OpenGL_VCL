@@ -133,8 +133,6 @@ begin
           Link;
 
           MemoP.Lines.Assign( Error );
-
-          if not Success then PageControl1.TabIndex := 1;
      end;
 
      ///// アレイ
