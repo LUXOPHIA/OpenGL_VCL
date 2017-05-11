@@ -81,9 +81,6 @@ begin
      //  |/      |/
      //  4-------5
 
-     glEnableClientState( GL_VERTEX_ARRAY );
-     glEnableClientState( GL_COLOR_ARRAY  );
-
      _BufV.Import( Ps );
      _BufC.Import( Cs );
      _BufF.Import( Fs );
@@ -91,6 +88,9 @@ end;
 
 procedure TForm1.DrawModel;
 begin
+     glEnableClientState( GL_VERTEX_ARRAY );
+     glEnableClientState( GL_COLOR_ARRAY  );
+
      with _BufV do
      begin
           Bind;
@@ -111,11 +111,17 @@ begin
             glDrawElements( GL_TRIANGLES, 3{Poin} * 12{Face}, GL_UNSIGNED_INT, nil );
           Unbind;
      end;
+
+     glDisableClientState( GL_VERTEX_ARRAY );
+     glDisableClientState( GL_COLOR_ARRAY  );
 end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 procedure TForm1.FormCreate(Sender: TObject);
+const
+     C0 :Single = 0.1;
+     C1 :Single = 1000;
 begin
      _Angle := 0;
 
@@ -129,7 +135,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -3, +3, -2, +2, 0.1, 100 );
+            glOrtho( -3, +3, -2, +2, C0, C1 );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -142,7 +148,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -4, +4, -2, +2, 0.1, 100 );
+            glOrtho( -4, +4, -2, +2, C0, C1 );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -155,7 +161,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -3, +3, -3, +3, 0.1, 100 );
+            glOrtho( -3, +3, -3, +3, C0, C1 );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -167,10 +173,11 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -4, +4, -3, +3, 0.1, 100 );
+            glFrustum( -4/8*C0, +4/8*C0,
+                       -3/8*C0, +3/8*C0, C0, C1 );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
-            glTranslatef( 0, 0, -5 );
+            glTranslatef( 0, 0, -8 );
             glRotatef( +30, 1, 0, 0 );
             glRotatef( -30, 0, 1, 0 );
             glRotatef( _Angle, 0, 1, 0 );
