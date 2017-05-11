@@ -91,26 +91,26 @@ begin
      glEnableClientState( GL_VERTEX_ARRAY );
      glEnableClientState( GL_COLOR_ARRAY  );
 
-     with _BufV do
-     begin
-          Bind;
-            glVertexPointer( 3, GL_FLOAT, 0, nil );
-          Unbind;
-     end;
+       with _BufV do
+       begin
+            Bind;
+              glVertexPointer( 3, GL_FLOAT, 0, nil );
+            Unbind;
+       end;
 
-     with _BufC do
-     begin
-          Bind;
-            glColorPointer( 4, GL_FLOAT, 0, nil );
-          Unbind;
-     end;
+       with _BufC do
+       begin
+            Bind;
+              glColorPointer( 4, GL_FLOAT, 0, nil );
+            Unbind;
+       end;
 
-     with _BufF do
-     begin
-          Bind;
-            glDrawElements( GL_TRIANGLES, 3{Poin} * 12{Face}, GL_UNSIGNED_INT, nil );
-          Unbind;
-     end;
+       with _BufF do
+       begin
+            Bind;
+              glDrawElements( GL_TRIANGLES, 3{Poin} * 12{Face}, GL_UNSIGNED_INT, nil );
+            Unbind;
+       end;
 
      glDisableClientState( GL_VERTEX_ARRAY );
      glDisableClientState( GL_COLOR_ARRAY  );
