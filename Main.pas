@@ -20,8 +20,6 @@ type
           GLView2: TGLView;
         GLView3: TGLView;
         GLView4: TGLView;
-      TabSheetP: TTabSheet;
-        MemoP: TMemo;
       TabSheetS: TTabSheet;
         PageControlS: TPageControl;
           TabSheetSV: TTabSheet;
@@ -32,6 +30,8 @@ type
             MemoSFS: TMemo;
             SplitterSF: TSplitter;
             MemoSFE: TMemo;
+      TabSheetP: TTabSheet;
+        MemoP: TMemo;
     Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
