@@ -26,11 +26,11 @@ type
         PageControlS: TPageControl;
           TabSheetSV: TTabSheet;
             MemoSVS: TMemo;
-            SplitterV: TSplitter;
+            SplitterSV: TSplitter;
             MemoSVE: TMemo;
           TabSheetSF: TTabSheet;
             MemoSFS: TMemo;
-            SplitterF: TSplitter;
+            SplitterSF: TSplitter;
             MemoSFE: TMemo;
     Timer1: TTimer;
     procedure FormCreate(Sender: TObject);

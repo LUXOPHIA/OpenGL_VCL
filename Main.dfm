@@ -151,7 +151,7 @@ object Form1: TForm1
         TabOrder = 0
         object TabSheetSV: TTabSheet
           Caption = 'Vertex'
-          object SplitterV: TSplitter
+          object SplitterSV: TSplitter
             Left = 0
             Top = 362
             Width = 702
@@ -197,7 +197,7 @@ object Form1: TForm1
         object TabSheetSF: TTabSheet
           Caption = 'Fragment'
           ImageIndex = 1
-          object SplitterF: TSplitter
+          object SplitterSF: TSplitter
             Left = 0
             Top = 362
             Width = 702
