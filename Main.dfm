@@ -133,24 +133,6 @@ object Form1: TForm1
         end
       end
     end
-    object TabSheetP: TTabSheet
-      Caption = 'Program'
-      ImageIndex = 1
-      object MemoP: TMemo
-        AlignWithMargins = True
-        Left = 10
-        Top = 10
-        Width = 710
-        Height = 510
-        Margins.Left = 10
-        Margins.Top = 10
-        Margins.Right = 10
-        Margins.Bottom = 10
-        Align = alClient
-        ReadOnly = True
-        TabOrder = 0
-      end
-    end
     object TabSheetS: TTabSheet
       Caption = 'Shader'
       ImageIndex = 2
@@ -169,114 +151,120 @@ object Form1: TForm1
         TabOrder = 0
         object TabSheetSV: TTabSheet
           Caption = 'Vertex'
-          object PageControlSV: TPageControl
+          object SplitterV: TSplitter
+            Left = 0
+            Top = 362
+            Width = 702
+            Height = 10
+            Cursor = crVSplit
+            Align = alBottom
+            Color = clWhite
+            ParentColor = False
+            ResizeStyle = rsUpdate
+            ExplicitTop = 359
+          end
+          object MemoSVE: TMemo
+            AlignWithMargins = True
+            Left = 10
+            Top = 372
+            Width = 682
+            Height = 100
+            Margins.Left = 10
+            Margins.Top = 0
+            Margins.Right = 10
+            Margins.Bottom = 10
+            Align = alBottom
+            ReadOnly = True
+            TabOrder = 0
+          end
+          object MemoSVS: TMemo
             AlignWithMargins = True
             Left = 10
             Top = 10
             Width = 682
-            Height = 462
+            Height = 352
             Margins.Left = 10
             Margins.Top = 10
             Margins.Right = 10
-            Margins.Bottom = 10
-            ActivePage = TabSheetSVS
+            Margins.Bottom = 0
             Align = alClient
-            TabOrder = 0
-            object TabSheetSVS: TTabSheet
-              Caption = 'Source'
-              object MemoSVS: TMemo
-                AlignWithMargins = True
-                Left = 10
-                Top = 10
-                Width = 654
-                Height = 414
-                Margins.Left = 10
-                Margins.Top = 10
-                Margins.Right = 10
-                Margins.Bottom = 10
-                Align = alClient
-                TabOrder = 0
-              end
-            end
-            object TabSheetSVE: TTabSheet
-              Caption = 'Error'
-              ImageIndex = 1
-              object MemoSVE: TMemo
-                AlignWithMargins = True
-                Left = 10
-                Top = 10
-                Width = 654
-                Height = 414
-                Margins.Left = 10
-                Margins.Top = 10
-                Margins.Right = 10
-                Margins.Bottom = 10
-                Align = alClient
-                ReadOnly = True
-                TabOrder = 0
-              end
-            end
+            TabOrder = 1
+            ExplicitLeft = 395
+            ExplicitWidth = 297
+            ExplicitHeight = 462
           end
         end
         object TabSheetSF: TTabSheet
           Caption = 'Fragment'
           ImageIndex = 1
-          object PageControlSF: TPageControl
+          object SplitterF: TSplitter
+            Left = 0
+            Top = 362
+            Width = 702
+            Height = 10
+            Cursor = crVSplit
+            Align = alBottom
+            Color = clWhite
+            ParentColor = False
+            ResizeStyle = rsUpdate
+            ExplicitTop = 300
+          end
+          object MemoSFE: TMemo
+            AlignWithMargins = True
+            Left = 10
+            Top = 372
+            Width = 682
+            Height = 100
+            Margins.Left = 10
+            Margins.Top = 0
+            Margins.Right = 10
+            Margins.Bottom = 10
+            Align = alBottom
+            ReadOnly = True
+            TabOrder = 0
+            ExplicitTop = 10
+          end
+          object MemoSFS: TMemo
             AlignWithMargins = True
             Left = 10
             Top = 10
             Width = 682
-            Height = 462
+            Height = 352
             Margins.Left = 10
             Margins.Top = 10
             Margins.Right = 10
-            Margins.Bottom = 10
-            ActivePage = TabSheetSFS
+            Margins.Bottom = 0
             Align = alClient
-            TabOrder = 0
-            object TabSheetSFS: TTabSheet
-              Caption = 'Source'
-              object MemoSFS: TMemo
-                AlignWithMargins = True
-                Left = 10
-                Top = 10
-                Width = 654
-                Height = 414
-                Margins.Left = 10
-                Margins.Top = 10
-                Margins.Right = 10
-                Margins.Bottom = 10
-                Align = alClient
-                TabOrder = 0
-              end
-            end
-            object TabSheetSFE: TTabSheet
-              Caption = 'Error'
-              ImageIndex = 1
-              object MemoSFE: TMemo
-                AlignWithMargins = True
-                Left = 10
-                Top = 10
-                Width = 654
-                Height = 414
-                Margins.Left = 10
-                Margins.Top = 10
-                Margins.Right = 10
-                Margins.Bottom = 10
-                Align = alClient
-                ReadOnly = True
-                TabOrder = 0
-              end
-            end
+            TabOrder = 1
+            ExplicitWidth = 654
+            ExplicitHeight = 0
           end
         end
+      end
+    end
+    object TabSheetP: TTabSheet
+      Caption = 'Program'
+      ImageIndex = 1
+      object MemoP: TMemo
+        AlignWithMargins = True
+        Left = 10
+        Top = 10
+        Width = 710
+        Height = 510
+        Margins.Left = 10
+        Margins.Top = 10
+        Margins.Right = 10
+        Margins.Bottom = 10
+        Align = alClient
+        ReadOnly = True
+        TabOrder = 0
       end
     end
   end
   object Timer1: TTimer
     Interval = 10
     OnTimer = Timer1Timer
-    Left = 70
-    Top = 125
+    Left = 55
+    Top = 95
   end
 end

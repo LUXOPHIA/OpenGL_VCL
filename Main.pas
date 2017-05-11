@@ -25,17 +25,13 @@ type
       TabSheetS: TTabSheet;
         PageControlS: TPageControl;
           TabSheetSV: TTabSheet;
-            PageControlSV: TPageControl;
-              TabSheetSVS: TTabSheet;
-                MemoSVS: TMemo;
-              TabSheetSVE: TTabSheet;
-                MemoSVE: TMemo;
+            MemoSVS: TMemo;
+            SplitterV: TSplitter;
+            MemoSVE: TMemo;
           TabSheetSF: TTabSheet;
-            PageControlSF: TPageControl;
-              TabSheetSFS: TTabSheet;
-                MemoSFS: TMemo;
-              TabSheetSFE: TTabSheet;
-                MemoSFE: TMemo;
+            MemoSFS: TMemo;
+            SplitterF: TSplitter;
+            MemoSFE: TMemo;
     Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -117,8 +113,6 @@ begin
 
           MemoSVS.Lines.Assign( Source );
           MemoSVE.Lines.Assign( Error  );
-
-          if not Success then PageControlSV.TabIndex := 1;
      end;
 
      with _ShaF do
@@ -127,8 +121,6 @@ begin
 
           MemoSFS.Lines.Assign( Source );
           MemoSFE.Lines.Assign( Error  );
-
-          if not Success then PageControlSF.TabIndex := 1;
      end;
 
      ///// プログラム
