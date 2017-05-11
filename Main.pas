@@ -86,9 +86,6 @@ begin
 
      ///// バッファ
 
-     glEnableClientState( GL_VERTEX_ARRAY );
-     glEnableClientState( GL_COLOR_ARRAY  );
-
      _BufV.Import( Ps );
      _BufC.Import( Cs );
      _BufF.Import( Fs );
@@ -147,33 +144,39 @@ end;
 
 procedure TForm1.DrawModel;
 begin
-     with _Prog do
-     begin
-          Use;
+     glEnableClientState( GL_VERTEX_ARRAY );
+     glEnableClientState( GL_COLOR_ARRAY  );
 
-          with _BufV do
-          begin
-               Bind;
-                 glVertexPointer( 3, GL_FLOAT, 0, nil );
-               Unbind;
-          end;
+       with _BufV do
+       begin
+            Bind;
+              glVertexPointer( 3, GL_FLOAT, 0, nil );
+            Unbind;
+       end;
 
-          with _BufC do
-          begin
-               Bind;
-                 glColorPointer( 4, GL_FLOAT, 0, nil );
-               Unbind;
-          end;
+       with _BufC do
+       begin
+            Bind;
+              glColorPointer( 4, GL_FLOAT, 0, nil );
+            Unbind;
+       end;
 
-          with _BufF do
-          begin
-               Bind;
-                 glDrawElements( GL_TRIANGLES, 3{Poin} * 12{Face}, GL_UNSIGNED_INT, nil );
-               Unbind;
-          end;
+       with _BufF do
+       begin
+            Bind;
 
-          Unuse;
-     end;
+              with _Prog do
+              begin
+                   Use;
+                     glDrawElements( GL_TRIANGLES, 3{Poin} * 12{Face}, GL_UNSIGNED_INT, nil );
+                   Unuse;
+              end;
+
+            Unbind;
+       end;
+
+     glDisableClientState( GL_VERTEX_ARRAY );
+     glDisableClientState( GL_COLOR_ARRAY  );
 end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
