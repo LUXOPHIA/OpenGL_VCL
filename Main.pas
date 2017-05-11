@@ -79,10 +79,10 @@ begin
      glEnableClientState( GL_VERTEX_ARRAY );
      glEnableClientState( GL_COLOR_ARRAY  );
 
-     glVertexPointer( 3, GL_FLOAT, 0, @Ps[ 0 ] );
-     glColorPointer ( 4, GL_FLOAT, 0, @Cs[ 0 ] );
+       glVertexPointer( 3, GL_FLOAT, 0, @Ps[ 0 ] );
+       glColorPointer ( 4, GL_FLOAT, 0, @Cs[ 0 ] );
 
-     glDrawElements( GL_TRIANGLES, 3{Poin} * 12{Face}, GL_UNSIGNED_INT, @Fs[ 0 ] );
+       glDrawElements( GL_TRIANGLES, 3{Poin} * 12{Face}, GL_UNSIGNED_INT, @Fs[ 0 ] );
 
      glDisableClientState( GL_VERTEX_ARRAY );
      glDisableClientState( GL_COLOR_ARRAY  );
