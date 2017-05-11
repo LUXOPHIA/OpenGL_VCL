@@ -43,7 +43,7 @@ implementation //###############################################################
 
 /////////////////////////////////////////////////////////////////////// メソッド
 
-procedure TForm1.DrawModel;                                                     { OpenGL 1.0 (1992) }
+procedure TForm1.DrawModel;
 const
      Ps :array [ 1..8 ] of TSingle3D = ( ( X:-1; Y:-1; Z:-1 ),
                                          ( X:+1; Y:-1; Z:-1 ),
