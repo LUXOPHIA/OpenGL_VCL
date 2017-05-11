@@ -98,6 +98,9 @@ end;
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 procedure TForm1.FormCreate(Sender: TObject);
+const
+     MIND :Single = 0.1;
+     MAXD :Single = 1000;
 begin
      _Angle := 0;
 
@@ -105,7 +108,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -3, +3, -2, +2, 0.1, 100 );
+            glOrtho( -3, +3, -2, +2, MIND, MAXD );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -118,7 +121,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -4, +4, -2, +2, 0.1, 100 );
+            glOrtho( -4, +4, -2, +2, MIND, MAXD );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -131,7 +134,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -3, +3, -3, +3, 0.1, 100 );
+            glOrtho( -3, +3, -3, +3, MIND, MAXD );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -143,10 +146,11 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -4, +4, -3, +3, 0.1, 100 );
+            glFrustum( -4/8*MIND, +4/8*MIND,
+                       -3/8*MIND, +3/8*MIND, MIND, MAXD );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
-            glTranslatef( 0, 0, -5 );
+            glTranslatef( 0, 0, -8 );
             glRotatef( +30, 1, 0, 0 );
             glRotatef( -30, 0, 1, 0 );
             glRotatef( _Angle, 0, 1, 0 );
