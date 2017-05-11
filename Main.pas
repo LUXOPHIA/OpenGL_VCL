@@ -9,7 +9,7 @@ uses
   Winapi.OpenGL, Winapi.OpenGLext,
   System.UITypes,
   Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
-  LUX, LUX.D3, LUX.GPU.OpenGL, LUX.GPU.OpenGL.Shader, LUX.GPU.OpenGL.GLView;
+  LUX, LUX.D3, LUX.GPU.OpenGL, LUX.GPU.OpenGL.Buffer, LUX.GPU.OpenGL.Shader, LUX.GPU.OpenGL.GLView;
 
 type
   TForm1 = class(TForm)
