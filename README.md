@@ -15,11 +15,11 @@ OpenGL のバージョンを辿りながら実装していくことで、新し�
 
 ![](https://github.com/LUXOPHIA/OpenGL_VCL/raw/master/--------/_SCREENSHOT/OpenGL_VCL-View.png)
 
-シェーダのソースコードやエラーメッセージは TMemo コンポーネントで表示できます。
+シェーダのソースコードは、`TMemo` コンポーネントによって書き換えることができ、リアルタイムにコンパイルされて、適宜エラーメッセージも表示されます。
 
 ![](https://github.com/LUXOPHIA/OpenGL_VCL/raw/master/--------/_SCREENSHOT/OpenGL_VCL-Shader-Vertex.png)
 
-`glLinkProgram` ルーチンによるリンク時のエラーメッセージも、TMemo コンポーネントで表示できます。
+[`glLinkProgram`](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glLinkProgram.xhtml) ルーチンによるリンク時のエラーメッセージも、`TMemo` コンポーネントで確認できます。
 
 ![](https://github.com/LUXOPHIA/OpenGL_VCL/raw/master/--------/_SCREENSHOT/OpenGL_VCL-Program.png)
 
