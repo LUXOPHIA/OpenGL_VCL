@@ -190,6 +190,7 @@ object Form1: TForm1
             Margins.Bottom = 0
             Align = alClient
             TabOrder = 1
+            OnChange = MemoSVSChange
           end
         end
         object TabSheetSF: TTabSheet
@@ -234,6 +235,7 @@ object Form1: TForm1
             Margins.Bottom = 0
             Align = alClient
             TabOrder = 1
+            OnChange = MemoSFSChange
           end
         end
       end
