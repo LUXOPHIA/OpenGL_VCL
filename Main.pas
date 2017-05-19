@@ -203,14 +203,14 @@ end;
 
 procedure TForm1.InitRender;
 const
-     C0 :Single = 0.1;
-     C1 :Single = 1000;
+     _N :Single = 0.1;
+     _F :Single = 1000;
 begin
      GLView1.OnPaint := procedure
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -3, +3, -2, +2, C0, C1 );
+            glOrtho( -3, +3, -2, +2, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -223,7 +223,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -4, +4, -2, +2, C0, C1 );
+            glOrtho( -4, +4, -2, +2, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -236,7 +236,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -3, +3, -3, +3, C0, C1 );
+            glOrtho( -3, +3, -3, +3, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -248,8 +248,8 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glFrustum( -4/8*C0, +4/8*C0,
-                       -3/8*C0, +3/8*C0, C0, C1 );
+            glFrustum( -4/8*_N, +4/8*_N,
+                       -3/8*_N, +3/8*_N, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -8 );
