@@ -27,12 +27,12 @@ type
     _Angle :Single;
   public
     { Public 宣言 }
-    _BufV :TGLBufferVS<TSingle3D>;
-    _BufC :TGLBufferVS<TAlphaColorF>;
-    _BufF :TGLBufferI<TCardinal3D>;
-    _ShaV :TGLShaderV;
-    _ShaF :TGLShaderF;
-    _Prog :TGLProgra;
+    _BufferV :TGLBufferVS<TSingle3D>;
+    _BufferC :TGLBufferVS<TAlphaColorF>;
+    _BufferF :TGLBufferI<TCardinal3D>;
+    _ShaderV :TGLShaderV;
+    _ShaderF :TGLShaderF;
+    _Progra  :TGLProgra;
     ///// メソッド
     procedure InitGeomet;
     procedure DrawModel;
@@ -87,13 +87,13 @@ begin
 
      ///// バッファ
 
-     _BufV.Import( Ps );
-     _BufC.Import( Cs );
-     _BufF.Import( Fs );
+     _BufferV.Import( Ps );
+     _BufferC.Import( Cs );
+     _BufferF.Import( Fs );
 
      ///// シェーダ
 
-     with _ShaV do
+     with _ShaderV do
      begin
           with Source do
           begin
@@ -112,7 +112,7 @@ begin
           Assert( Status, Errors.Text );
      end;
 
-     with _ShaF do
+     with _ShaderF do
      begin
           with Source do
           begin
@@ -132,10 +132,10 @@ begin
 
      ///// プログラム
 
-     with _Prog do
+     with _Progra do
      begin
-          Attach( _ShaV );
-          Attach( _ShaF );
+          Attach( _ShaderV );
+          Attach( _ShaderF );
 
           Link;
 
@@ -150,25 +150,25 @@ begin
      glEnableClientState( GL_VERTEX_ARRAY );
      glEnableClientState( GL_COLOR_ARRAY  );
 
-       with _BufV do
+       with _BufferV do
        begin
             Bind;
               glVertexPointer( 3, GL_FLOAT, 0, nil );
             Unbind;
        end;
 
-       with _BufC do
+       with _BufferC do
        begin
             Bind;
               glColorPointer( 4, GL_FLOAT, 0, nil );
             Unbind;
        end;
 
-       with _BufF do
+       with _BufferF do
        begin
             Bind;
 
-              with _Prog do
+              with _Progra do
               begin
                    Use;
                      glDrawElements( GL_TRIANGLES, 3{Poin} * 12{Face}, GL_UNSIGNED_INT, nil );
@@ -186,14 +186,14 @@ end;
 
 procedure TForm1.InitRender;
 const
-     C0 :Single = 0.1;
-     C1 :Single = 1000;
+     _N :Single = 0.1;
+     _F :Single = 1000;
 begin
      GLView1.OnPaint := procedure
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -3, +3, -2, +2, C0, C1 );
+            glOrtho( -3, +3, -2, +2, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -206,7 +206,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -4, +4, -2, +2, C0, C1 );
+            glOrtho( -4, +4, -2, +2, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -219,7 +219,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -3, +3, -3, +3, C0, C1 );
+            glOrtho( -3, +3, -3, +3, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -231,8 +231,8 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glFrustum( -4/8*C0, +4/8*C0,
-                       -3/8*C0, +3/8*C0, C0, C1 );
+            glFrustum( -4/8*_N, +4/8*_N,
+                       -3/8*_N, +3/8*_N, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -8 );
@@ -248,14 +248,14 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-     _BufV := TGLBufferVS<TSingle3D>   .Create( GL_STATIC_DRAW );
-     _BufC := TGLBufferVS<TAlphaColorF>.Create( GL_STATIC_DRAW );
-     _BufF := TGLBufferI<TCardinal3D>  .Create( GL_STATIC_DRAW );
+     _BufferV := TGLBufferVS<TSingle3D>   .Create( GL_STATIC_DRAW );
+     _BufferC := TGLBufferVS<TAlphaColorF>.Create( GL_STATIC_DRAW );
+     _BufferF := TGLBufferI<TCardinal3D>  .Create( GL_STATIC_DRAW );
 
-     _ShaV := TGLShaderV.Create;
-     _ShaF := TGLShaderF.Create;
+     _ShaderV := TGLShaderV.Create;
+     _ShaderF := TGLShaderF.Create;
 
-     _Prog := TGLProgra.Create;
+     _Progra := TGLProgra.Create;
 
      InitGeomet;
      InitRender;
