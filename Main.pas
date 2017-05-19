@@ -28,6 +28,7 @@ type
     { Public 宣言 }
     ///// メソッド
     procedure DrawModel;
+    procedure InitRender;
   end;
 
 var
@@ -95,15 +96,13 @@ begin
      glEnd;
 end;
 
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+//------------------------------------------------------------------------------
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TForm1.InitRender;
 const
      C0 :Single = 0.1;
      C1 :Single = 1000;
 begin
-     _Angle := 0;
-
      GLView1.OnPaint := procedure
      begin
           glMatrixMode( GL_PROJECTION );
@@ -156,6 +155,15 @@ begin
             glRotatef( _Angle, 0, 1, 0 );
             DrawModel;
      end;
+end;
+
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+     InitRender;
+
+     _Angle := 0;
 end;
 
 ////////////////////////////////////////////////////////////////////////////////
