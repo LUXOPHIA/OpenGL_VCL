@@ -9,8 +9,14 @@ uses
   Winapi.OpenGL, Winapi.OpenGLext,
   System.UITypes,
   Vcl.ExtCtrls,
-  LUX, LUX.D3, LUX.GPU.OpenGL.GLView, LUX.GPU.OpenGL.Buffer.Vert,
-  LUX.GPU.OpenGL.Buffer.Elem, LUX.GPU.OpenGL.Shader, LUX.GPU.OpenGL.Progra;
+  LUX, LUX.D3,
+  LUX.GPU.OpenGL,
+  LUX.GPU.OpenGL.GLView,
+  LUX.GPU.OpenGL.Buffer,
+  LUX.GPU.OpenGL.Buffer.Vert,
+  LUX.GPU.OpenGL.Buffer.Elem,
+  LUX.GPU.OpenGL.Shader,
+  LUX.GPU.OpenGL.Progra;
 
 type
   TForm1 = class(TForm)
@@ -21,6 +27,7 @@ type
     GLView4: TGLView;
     Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
     { Private 宣言 }
@@ -99,12 +106,12 @@ begin
           begin
                BeginUpdate;
 
-               Add( '#version 120' );
-               Add( 'void main()' );
-               Add( '{' );
-               Add( '  gl_Position   = gl_ModelViewProjectionMatrix * gl_Vertex;' );
-               Add( '  gl_FrontColor = gl_Color;' );
-               Add( '}' );
+                 Add( '#version 120' );
+                 Add( 'void main()' );
+                 Add( '{' );
+                 Add( '  gl_Position   = gl_ModelViewProjectionMatrix * gl_Vertex;' );
+                 Add( '  gl_FrontColor = gl_Color;' );
+                 Add( '}' );
 
                EndUpdate;
           end;
@@ -118,11 +125,11 @@ begin
           begin
                BeginUpdate;
 
-               Add( '#version 120' );
-               Add( 'void main()' );
-               Add( '{' );
-               Add( '  gl_FragColor = gl_Color;' );
-               Add( '}' );
+                 Add( '#version 120' );
+                 Add( 'void main()' );
+                 Add( '{' );
+                 Add( '  gl_FragColor = gl_Color;' );
+                 Add( '}' );
 
                EndUpdate;
           end;
@@ -243,7 +250,6 @@ begin
      end;
 end;
 
-
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -252,15 +258,27 @@ begin
      _BufferC := TGLBufferVS<TAlphaColorF>.Create( GL_STATIC_DRAW );
      _BufferF := TGLBufferI<TCardinal3D>  .Create( GL_STATIC_DRAW );
 
-     _ShaderV := TGLShaderV.Create;
-     _ShaderF := TGLShaderF.Create;
+     _ShaderV := TGLShaderV               .Create;
+     _ShaderF := TGLShaderF               .Create;
 
-     _Progra := TGLProgra.Create;
+     _Progra  := TGLProgra                .Create;
 
      InitGeomet;
      InitRender;
 
      _Angle := 0;
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+     _Progra .DisposeOf;
+
+     _ShaderV.DisposeOf;
+     _ShaderF.DisposeOf;
+
+     _BufferV.DisposeOf;
+     _BufferC.DisposeOf;
+     _BufferF.DisposeOf;
 end;
 
 ////////////////////////////////////////////////////////////////////////////////
