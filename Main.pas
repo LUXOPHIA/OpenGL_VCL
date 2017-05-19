@@ -27,6 +27,7 @@ type
     GLView4: TGLView;
     Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
     { Private 宣言 }
@@ -268,17 +269,31 @@ begin
      _BufferC := TGLBufferVS<TAlphaColorF>.Create( GL_STATIC_DRAW );
      _BufferF := TGLBufferI<TCardinal3D>  .Create( GL_STATIC_DRAW );
 
-     _ShaderV := TGLShaderV.Create;
-     _ShaderF := TGLShaderF.Create;
+     _ShaderV := TGLShaderV               .Create;
+     _ShaderF := TGLShaderF               .Create;
 
-     _Progra := TGLProgra.Create;
+     _Progra  := TGLProgra                .Create;
 
-     _Varray := TGLVarray.Create;
+     _Varray  := TGLVarray                .Create;
 
      InitGeomet;
      InitRender;
 
      _Angle := 0;
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+     _Varray .DisposeOf;
+
+     _Progra .DisposeOf;
+
+     _ShaderV.DisposeOf;
+     _ShaderF.DisposeOf;
+
+     _BufferV.DisposeOf;
+     _BufferC.DisposeOf;
+     _BufferF.DisposeOf;
 end;
 
 ////////////////////////////////////////////////////////////////////////////////
