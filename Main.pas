@@ -20,6 +20,7 @@ type
     GLView4: TGLView;
     Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
     { Private 宣言 }
@@ -85,6 +86,8 @@ begin
      _BufferC.Import( Cs );
      _BufferF.Import( Fs );
 end;
+
+//------------------------------------------------------------------------------
 
 procedure TForm1.DrawModel;
 begin
@@ -189,6 +192,13 @@ begin
      InitRender;
 
      _Angle := 0;
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+     _BufferV.DisposeOf;
+     _BufferC.DisposeOf;
+     _BufferF.DisposeOf;
 end;
 
 ////////////////////////////////////////////////////////////////////////////////
