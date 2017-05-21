@@ -195,6 +195,12 @@ object Form1: TForm1
             Margins.Right = 10
             Margins.Bottom = 10
             Align = alBottom
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = #65325#65331' '#12468#12471#12483#12463
+            Font.Style = []
+            ParentFont = False
             ReadOnly = True
             TabOrder = 0
           end
@@ -209,6 +215,12 @@ object Form1: TForm1
             Margins.Right = 10
             Margins.Bottom = 0
             Align = alClient
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = #65325#65331' '#12468#12471#12483#12463
+            Font.Style = []
+            ParentFont = False
             TabOrder = 1
             OnChange = MemoSVSChange
           end
@@ -240,6 +252,12 @@ object Form1: TForm1
             Margins.Right = 10
             Margins.Bottom = 10
             Align = alBottom
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = #65325#65331' '#12468#12471#12483#12463
+            Font.Style = []
+            ParentFont = False
             ReadOnly = True
             TabOrder = 0
           end
@@ -254,6 +272,12 @@ object Form1: TForm1
             Margins.Right = 10
             Margins.Bottom = 0
             Align = alClient
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = #65325#65331' '#12468#12471#12483#12463
+            Font.Style = []
+            ParentFont = False
             TabOrder = 1
             OnChange = MemoSFSChange
           end
@@ -274,6 +298,12 @@ object Form1: TForm1
         Margins.Right = 10
         Margins.Bottom = 10
         Align = alClient
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #65325#65331' '#12468#12471#12483#12463
+        Font.Style = []
+        ParentFont = False
         ReadOnly = True
         TabOrder = 0
       end
