@@ -16,25 +16,31 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
-    Left = 0
-    Top = 0
-    Width = 730
-    Height = 215
-    Align = alTop
+    AlignWithMargins = True
+    Left = 5
+    Top = 5
+    Width = 310
+    Height = 520
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 0
+    Margins.Bottom = 5
+    Align = alLeft
     BevelOuter = bvNone
     TabOrder = 0
     inline GLView1: TGLView
       AlignWithMargins = True
-      Left = 10
-      Top = 10
+      Left = 5
+      Top = 5
       Width = 300
-      Height = 200
-      Margins.Left = 10
-      Margins.Top = 10
+      Height = 300
+      Margins.Left = 5
+      Margins.Top = 5
       Margins.Right = 5
       Margins.Bottom = 5
-      Align = alLeft
+      Align = alTop
       DoubleBuffered = False
+      Enabled = False
       Color = clGray
       Ctl3D = True
       ParentBackground = False
@@ -42,20 +48,19 @@ object Form1: TForm1
       ParentCtl3D = False
       ParentDoubleBuffered = False
       TabOrder = 0
-      ExplicitLeft = 10
-      ExplicitTop = 10
+      ExplicitLeft = 5
+      ExplicitTop = 5
       ExplicitWidth = 300
-      ExplicitHeight = 200
     end
     inline GLView2: TGLView
       AlignWithMargins = True
-      Left = 320
-      Top = 10
-      Width = 400
+      Left = 5
+      Top = 315
+      Width = 300
       Height = 200
       Margins.Left = 5
-      Margins.Top = 10
-      Margins.Right = 10
+      Margins.Top = 5
+      Margins.Right = 5
       Margins.Bottom = 5
       Align = alClient
       DoubleBuffered = False
@@ -66,55 +71,70 @@ object Form1: TForm1
       ParentCtl3D = False
       ParentDoubleBuffered = False
       TabOrder = 1
-      ExplicitLeft = 320
-      ExplicitTop = 10
+      ExplicitLeft = 5
+      ExplicitTop = 315
+      ExplicitWidth = 300
       ExplicitHeight = 200
     end
   end
-  inline GLView3: TGLView
+  object Panel2: TPanel
     AlignWithMargins = True
-    Left = 10
-    Top = 220
-    Width = 300
-    Height = 300
-    Margins.Left = 10
+    Left = 315
+    Top = 5
+    Width = 410
+    Height = 520
+    Margins.Left = 0
     Margins.Top = 5
     Margins.Right = 5
-    Margins.Bottom = 10
-    Align = alLeft
-    DoubleBuffered = False
-    Color = clGray
-    Ctl3D = True
-    ParentBackground = False
-    ParentColor = False
-    ParentCtl3D = False
-    ParentDoubleBuffered = False
-    TabOrder = 1
-    ExplicitLeft = 10
-    ExplicitTop = 220
-    ExplicitWidth = 300
-  end
-  inline GLView4: TGLView
-    AlignWithMargins = True
-    Left = 320
-    Top = 220
-    Width = 400
-    Height = 300
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 10
-    Margins.Bottom = 10
+    Margins.Bottom = 5
     Align = alClient
-    DoubleBuffered = False
-    Color = clGray
-    Ctl3D = True
-    ParentBackground = False
-    ParentColor = False
-    ParentCtl3D = False
-    ParentDoubleBuffered = False
-    TabOrder = 2
-    ExplicitLeft = 320
-    ExplicitTop = 220
+    BevelOuter = bvNone
+    TabOrder = 1
+    inline GLView3: TGLView
+      AlignWithMargins = True
+      Left = 5
+      Top = 5
+      Width = 400
+      Height = 200
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Align = alTop
+      DoubleBuffered = False
+      Color = clGray
+      Ctl3D = True
+      ParentBackground = False
+      ParentColor = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      TabOrder = 0
+      ExplicitLeft = 5
+      ExplicitTop = 5
+      ExplicitHeight = 200
+    end
+    inline GLView4: TGLView
+      AlignWithMargins = True
+      Left = 5
+      Top = 215
+      Width = 400
+      Height = 300
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Align = alClient
+      DoubleBuffered = False
+      Color = clGray
+      Ctl3D = True
+      ParentBackground = False
+      ParentColor = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      TabOrder = 1
+      ExplicitLeft = 5
+      ExplicitTop = 215
+    end
   end
   object Timer1: TTimer
     Interval = 10
