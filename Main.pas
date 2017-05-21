@@ -27,8 +27,9 @@ type
         Panel1: TPanel;
           GLView1: TGLView;
           GLView2: TGLView;
-        GLView3: TGLView;
-        GLView4: TGLView;
+        Panel2: TPanel;
+          GLView3: TGLView;
+          GLView4: TGLView;
       TabSheetS: TTabSheet;
         PageControlS: TPageControl;
           TabSheetSV: TTabSheet;
@@ -134,7 +135,7 @@ begin
 
           with C do
           begin
-               Proj := TSingleM4.ProjOrth( -3, +3, -2, +2, _N, _F );
+               Proj := TSingleM4.ProjOrth( -2, +2, -2, +2, _N, _F );
 
                Move := TSingleM4.Translate( 0, +5, 0 )
                      * TSingleM4.RotateX( DegToRad( -90 ) );
@@ -144,30 +145,29 @@ begin
 
           with C do
           begin
-               Proj := TSingleM4.ProjOrth( -4, +4, -2, +2, _N, _F );
+               Proj := TSingleM4.ProjOrth( -3, +3, -2, +2, _N, _F );
 
-               Move := TSingleM4.Translate( 0, 0, +5 );
+               Move := TSingleM4.RotateX( DegToRad( -30 ) )
+                     * TSingleM4.Translate( 0, 0, +5 );
           end;
 
           Items[ 1 ] := C;
 
           with C do
           begin
-               Proj := TSingleM4.ProjOrth( -3, +3, -3, +3, _N, _F );
+               Proj := TSingleM4.ProjOrth( -3, +3, -1.5, +1.5, _N, _F );
 
-               Move := TSingleM4.Translate( -5, 0, 0 )
-                     * TSingleM4.RotateY( DegToRad( -90 ) );
+               Move := TSingleM4.Translate( 0, 0, +5 );
           end;
 
           Items[ 2 ] := C;
 
           with C do
           begin
-               Proj := TSingleM4.ProjPers( -4/8*_N, +4/8*_N, -3/8*_N, +3/8*_N, _N, _F );
+               Proj := TSingleM4.ProjPers( -4/4*_N, +4/4*_N, -3/4*_N, +3/4*_N, _N, _F );
 
-               Move := TSingleM4.RotateY( DegToRad( +30 ) )
-                     * TSingleM4.RotateX( DegToRad( -30 ) )
-                     * TSingleM4.Translate( 0, 0, +8 );
+               Move := TSingleM4.RotateX( DegToRad( -30 ) )
+                     * TSingleM4.Translate( 0, -0.25, +3 );
           end;
 
           Items[ 3 ] := C;

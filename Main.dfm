@@ -31,75 +31,32 @@ object Form1: TForm1
     TabOrder = 0
     object TabSheetV: TTabSheet
       Caption = 'View'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-      inline GLView3: TGLView
+      object Panel1: TPanel
         AlignWithMargins = True
-        Left = 10
-        Top = 220
-        Width = 300
-        Height = 300
-        Margins.Left = 10
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 10
-        Align = alLeft
-        DoubleBuffered = False
-        Color = clGray
-        Ctl3D = True
-        ParentBackground = False
-        ParentColor = False
-        ParentCtl3D = False
-        ParentDoubleBuffered = False
-        TabOrder = 0
-        ExplicitLeft = 10
-        ExplicitTop = 220
-        ExplicitWidth = 300
-      end
-      inline GLView4: TGLView
-        AlignWithMargins = True
-        Left = 320
-        Top = 220
-        Width = 400
-        Height = 300
+        Left = 5
+        Top = 5
+        Width = 310
+        Height = 520
         Margins.Left = 5
         Margins.Top = 5
-        Margins.Right = 10
-        Margins.Bottom = 10
-        Align = alClient
-        DoubleBuffered = False
-        Color = clGray
-        Ctl3D = True
-        ParentBackground = False
-        ParentColor = False
-        ParentCtl3D = False
-        ParentDoubleBuffered = False
-        TabOrder = 1
-        ExplicitLeft = 320
-        ExplicitTop = 220
-      end
-      object Panel1: TPanel
-        Left = 0
-        Top = 0
-        Width = 730
-        Height = 215
-        Align = alTop
+        Margins.Right = 0
+        Margins.Bottom = 5
+        Align = alLeft
         BevelOuter = bvNone
-        TabOrder = 2
+        TabOrder = 0
         inline GLView1: TGLView
           AlignWithMargins = True
-          Left = 10
-          Top = 10
+          Left = 5
+          Top = 5
           Width = 300
-          Height = 200
-          Margins.Left = 10
-          Margins.Top = 10
+          Height = 300
+          Margins.Left = 5
+          Margins.Top = 5
           Margins.Right = 5
           Margins.Bottom = 5
-          Align = alLeft
+          Align = alTop
           DoubleBuffered = False
+          Enabled = False
           Color = clGray
           Ctl3D = True
           ParentBackground = False
@@ -107,20 +64,19 @@ object Form1: TForm1
           ParentCtl3D = False
           ParentDoubleBuffered = False
           TabOrder = 0
-          ExplicitLeft = 10
-          ExplicitTop = 10
+          ExplicitLeft = 5
+          ExplicitTop = 5
           ExplicitWidth = 300
-          ExplicitHeight = 200
         end
         inline GLView2: TGLView
           AlignWithMargins = True
-          Left = 320
-          Top = 10
-          Width = 400
+          Left = 5
+          Top = 315
+          Width = 300
           Height = 200
           Margins.Left = 5
-          Margins.Top = 10
-          Margins.Right = 10
+          Margins.Top = 5
+          Margins.Right = 5
           Margins.Bottom = 5
           Align = alClient
           DoubleBuffered = False
@@ -131,19 +87,75 @@ object Form1: TForm1
           ParentCtl3D = False
           ParentDoubleBuffered = False
           TabOrder = 1
-          ExplicitLeft = 320
-          ExplicitTop = 10
+          ExplicitLeft = 5
+          ExplicitTop = 315
+          ExplicitWidth = 300
           ExplicitHeight = 200
+        end
+      end
+      object Panel2: TPanel
+        AlignWithMargins = True
+        Left = 315
+        Top = 5
+        Width = 410
+        Height = 520
+        Margins.Left = 0
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
+        Align = alClient
+        BevelOuter = bvNone
+        TabOrder = 1
+        inline GLView3: TGLView
+          AlignWithMargins = True
+          Left = 5
+          Top = 5
+          Width = 400
+          Height = 200
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
+          Align = alTop
+          DoubleBuffered = False
+          Color = clGray
+          Ctl3D = True
+          ParentBackground = False
+          ParentColor = False
+          ParentCtl3D = False
+          ParentDoubleBuffered = False
+          TabOrder = 0
+          ExplicitLeft = 5
+          ExplicitTop = 5
+          ExplicitHeight = 200
+        end
+        inline GLView4: TGLView
+          AlignWithMargins = True
+          Left = 5
+          Top = 215
+          Width = 400
+          Height = 300
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
+          Align = alClient
+          DoubleBuffered = False
+          Color = clGray
+          Ctl3D = True
+          ParentBackground = False
+          ParentColor = False
+          ParentCtl3D = False
+          ParentDoubleBuffered = False
+          TabOrder = 1
+          ExplicitLeft = 5
+          ExplicitTop = 215
         end
       end
     end
     object TabSheetS: TTabSheet
       Caption = 'Shader'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PageControlS: TPageControl
         AlignWithMargins = True
         Left = 10
@@ -159,10 +171,6 @@ object Form1: TForm1
         TabOrder = 0
         object TabSheetSV: TTabSheet
           Caption = 'Vertex'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object SplitterSV: TSplitter
             Left = 0
             Top = 362
@@ -208,10 +216,6 @@ object Form1: TForm1
         object TabSheetSF: TTabSheet
           Caption = 'Fragment'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object SplitterSF: TSplitter
             Left = 0
             Top = 362
@@ -259,10 +263,6 @@ object Form1: TForm1
     object TabSheetP: TTabSheet
       Caption = 'Program'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object MemoP: TMemo
         AlignWithMargins = True
         Left = 10
