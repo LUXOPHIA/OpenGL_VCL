@@ -202,6 +202,7 @@ object Form1: TForm1
             Font.Style = []
             ParentFont = False
             ReadOnly = True
+            ScrollBars = ssBoth
             TabOrder = 0
           end
           object MemoSVS: TMemo
@@ -221,6 +222,7 @@ object Form1: TForm1
             Font.Name = #65325#65331' '#12468#12471#12483#12463
             Font.Style = []
             ParentFont = False
+            ScrollBars = ssBoth
             TabOrder = 1
             OnChange = MemoSVSChange
           end
@@ -259,6 +261,7 @@ object Form1: TForm1
             Font.Style = []
             ParentFont = False
             ReadOnly = True
+            ScrollBars = ssBoth
             TabOrder = 0
           end
           object MemoSFS: TMemo
@@ -278,6 +281,7 @@ object Form1: TForm1
             Font.Name = #65325#65331' '#12468#12471#12483#12463
             Font.Style = []
             ParentFont = False
+            ScrollBars = ssBoth
             TabOrder = 1
             OnChange = MemoSFSChange
           end
@@ -305,6 +309,7 @@ object Form1: TForm1
         Font.Style = []
         ParentFont = False
         ReadOnly = True
+        ScrollBars = ssBoth
         TabOrder = 0
       end
     end
