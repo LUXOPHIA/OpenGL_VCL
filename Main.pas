@@ -59,7 +59,7 @@ const
                ( R:0; G:1; B:0; A:1 ), ( R:1; G:1; B:0; A:1 ),
                ( R:0; G:0; B:1; A:1 ), ( R:1; G:0; B:1; A:1 ),
                ( R:0; G:1; B:1; A:1 ), ( R:1; G:1; B:1; A:1 ) );
-     Fs :array [ 0..12-1, 0..3-1 ] of Cardinal
+     Es :array [ 0..12-1, 0..3-1 ] of Cardinal
            = ( ( 0, 4, 6 ), ( 6, 2, 0 ), ( 7, 5, 1 ), ( 1, 3, 7 ),
                ( 0, 1, 5 ), ( 5, 4, 0 ), ( 7, 3, 2 ), ( 2, 6, 7 ),
                ( 0, 2, 3 ), ( 3, 1, 0 ), ( 7, 6, 4 ), ( 4, 5, 7 ) );
@@ -78,7 +78,7 @@ begin
        glVertexPointer( 3, GL_FLOAT, 0, @Ps[ 0 ] );
        glColorPointer ( 4, GL_FLOAT, 0, @Cs[ 0 ] );
 
-       glDrawElements( GL_TRIANGLES, 3{Poin} * 12{Face}, GL_UNSIGNED_INT, @Fs[ 0, 0 ] );
+       glDrawElements( GL_TRIANGLES, 3{Poin} * 12{Face}, GL_UNSIGNED_INT, @Es[ 0, 0 ] );
 
      glDisableClientState( GL_VERTEX_ARRAY );
      glDisableClientState( GL_COLOR_ARRAY  );
@@ -95,7 +95,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -2, +2, -2, +2, _N, _F );
+            glOrtho( -3, +3, -3, +3, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -137,7 +137,7 @@ begin
                        -3/4*_N, +3/4*_N, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
-            glTranslatef( 0, +0.25, 0 );
+            glTranslatef( 0, +0.3, 0 );
             glTranslatef( 0, 0, -3 );
             glRotatef( +30, 1, 0, 0 );
             glRotatef( _Angle, 0, 1, 0 );
