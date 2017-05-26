@@ -28,9 +28,6 @@ object Form1: TForm1
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 0
-    ExplicitTop = 0
-    ExplicitHeight = 530
     inline GLView1: TGLView
       AlignWithMargins = True
       Left = 5
@@ -51,9 +48,9 @@ object Form1: TForm1
       ParentCtl3D = False
       ParentDoubleBuffered = False
       TabOrder = 0
-      ExplicitLeft = 325
-      ExplicitTop = 10
-      ExplicitWidth = 515
+      ExplicitLeft = 5
+      ExplicitTop = 5
+      ExplicitWidth = 300
     end
     inline GLView2: TGLView
       AlignWithMargins = True
@@ -74,10 +71,10 @@ object Form1: TForm1
       ParentCtl3D = False
       ParentDoubleBuffered = False
       TabOrder = 1
-      ExplicitLeft = -85
-      ExplicitTop = 5
+      ExplicitLeft = 5
+      ExplicitTop = 315
       ExplicitWidth = 300
-      ExplicitHeight = 515
+      ExplicitHeight = 200
     end
   end
   object Panel2: TPanel
@@ -93,10 +90,6 @@ object Form1: TForm1
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 0
-    ExplicitTop = 215
-    ExplicitWidth = 215
-    ExplicitHeight = 730
     inline GLView3: TGLView
       AlignWithMargins = True
       Left = 5
@@ -117,8 +110,7 @@ object Form1: TForm1
       ParentDoubleBuffered = False
       TabOrder = 0
       ExplicitLeft = 5
-      ExplicitTop = 10
-      ExplicitWidth = 395
+      ExplicitTop = 5
       ExplicitHeight = 200
     end
     inline GLView4: TGLView
@@ -140,9 +132,8 @@ object Form1: TForm1
       ParentCtl3D = False
       ParentDoubleBuffered = False
       TabOrder = 1
-      ExplicitTop = 220
-      ExplicitWidth = 385
-      ExplicitHeight = 290
+      ExplicitLeft = 5
+      ExplicitTop = 215
     end
   end
   object Timer1: TTimer

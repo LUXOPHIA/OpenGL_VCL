@@ -59,7 +59,7 @@ const
                ( R:0; G:1; B:0; A:1 ), ( R:1; G:1; B:0; A:1 ),
                ( R:0; G:0; B:1; A:1 ), ( R:1; G:0; B:1; A:1 ),
                ( R:0; G:1; B:1; A:1 ), ( R:1; G:1; B:1; A:1 ) );
-     Fs :array [ 1..6, 1..4 ] of Cardinal
+     Es :array [ 1..6, 1..4 ] of Cardinal
            = ( ( 1, 5, 7, 3 ), ( 8, 6, 2, 4 ),
                ( 1, 2, 6, 5 ), ( 8, 4, 3, 7 ),
                ( 1, 3, 4, 2 ), ( 8, 7, 5, 6 ) );
@@ -80,7 +80,7 @@ begin
        begin
             for K := 1 to 4 do
             begin
-                 I := Fs[ N, K ];
+                 I := Es[ N, K ];
 
                  with Cs[ I ] do glColor3f( R, G, B );
 
@@ -102,7 +102,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -2, +2, -2, +2, _N, _F );
+            glOrtho( -3, +3, -3, +3, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -144,7 +144,7 @@ begin
                        -3/4*_N, +3/4*_N, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
-            glTranslatef( 0, +0.25, 0 );
+            glTranslatef( 0, +0.3, 0 );
             glTranslatef( 0, 0, -3 );
             glRotatef( +30, 1, 0, 0 );
             glRotatef( _Angle, 0, 1, 0 );
