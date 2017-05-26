@@ -37,7 +37,7 @@ type
     { Public 宣言 }
     _BufferV :TGLBufferVS<TSingle3D>;
     _BufferC :TGLBufferVS<TAlphaColorF>;
-    _BufferF :TGLBufferI<TCardinal3D>;
+    _BufferF :TGLBufferE32;
     _ShaderV :TGLShaderV;
     _ShaderF :TGLShaderF;
     _Progra  :TGLProgra;
@@ -73,7 +73,7 @@ const
                ( R:0; G:1; B:0; A:1 ), ( R:1; G:1; B:0; A:1 ),
                ( R:0; G:0; B:1; A:1 ), ( R:1; G:0; B:1; A:1 ),
                ( R:0; G:1; B:1; A:1 ), ( R:1; G:1; B:1; A:1 ) );
-     Fs :array [ 0..12-1 ] of TCardinal3D
+     Es :array [ 0..12-1 ] of TCardinal3D
            = ( ( X:0; Y:4; Z:6 ), ( X:6; Y:2; Z:0 ), ( X:7; Y:5; Z:1 ), ( X:1; Y:3; Z:7 ),
                ( X:0; Y:1; Z:5 ), ( X:5; Y:4; Z:0 ), ( X:7; Y:3; Z:2 ), ( X:2; Y:6; Z:7 ),
                ( X:0; Y:2; Z:3 ), ( X:3; Y:1; Z:0 ), ( X:7; Y:6; Z:4 ), ( X:4; Y:5; Z:7 ) );
@@ -90,7 +90,7 @@ begin
 
      _BufferV.Import( Ps );
      _BufferC.Import( Cs );
-     _BufferF.Import( Fs );
+     _BufferF.Import( Es );
 
      ///// シェーダ
 
@@ -204,7 +204,7 @@ begin
      begin
           glMatrixMode( GL_PROJECTION );
             glLoadIdentity;
-            glOrtho( -2, +2, -2, +2, _N, _F );
+            glOrtho( -3, +3, -3, +3, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
             glTranslatef( 0, 0, -5 );
@@ -246,7 +246,7 @@ begin
                        -3/4*_N, +3/4*_N, _N, _F );
           glMatrixMode( GL_MODELVIEW );
             glLoadIdentity;
-            glTranslatef( 0, +0.25, 0 );
+            glTranslatef( 0, +0.3, 0 );
             glTranslatef( 0, 0, -3 );
             glRotatef( +30, 1, 0, 0 );
             glRotatef( _Angle, 0, 1, 0 );
@@ -260,7 +260,7 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
      _BufferV := TGLBufferVS<TSingle3D>   .Create( GL_STATIC_DRAW );
      _BufferC := TGLBufferVS<TAlphaColorF>.Create( GL_STATIC_DRAW );
-     _BufferF := TGLBufferI<TCardinal3D>  .Create( GL_STATIC_DRAW );
+     _BufferF := TGLBufferE32             .Create( GL_STATIC_DRAW );
 
      _ShaderV := TGLShaderV               .Create;
      _ShaderF := TGLShaderF               .Create;

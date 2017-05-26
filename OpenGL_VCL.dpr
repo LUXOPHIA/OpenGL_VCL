@@ -33,7 +33,9 @@ uses
   LUX.GPU.OpenGL.Pluger in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\LUX.GPU.OpenGL.Pluger.pas',
   LUX.GPU.OpenGL.Progra in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\LUX.GPU.OpenGL.Progra.pas',
   LUX.GPU.OpenGL.Buffer.Elem in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\LUX.GPU.OpenGL.Buffer.Elem.pas',
-  LUX.GPU.OpenGL.VCL in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\VCL\LUX.GPU.OpenGL.VCL.pas';
+  LUX.GPU.OpenGL.VCL in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\VCL\LUX.GPU.OpenGL.VCL.pas',
+  LUX.GPU.OpenGL.Imager.VCL in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\VCL\LUX.GPU.OpenGL.Imager.VCL.pas',
+  LUX.GPU.OpenGL.Imager in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\LUX.GPU.OpenGL.Imager.pas';
 
 {$R *.res}
 
