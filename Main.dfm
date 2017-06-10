@@ -148,6 +148,8 @@ object Form1: TForm1
           ParentCtl3D = False
           ParentDoubleBuffered = False
           TabOrder = 1
+          OnMouseMove = GLView4MouseMove
+          OnMouseUp = GLView4MouseUp
           ExplicitLeft = 5
           ExplicitTop = 215
         end
@@ -313,11 +315,5 @@ object Form1: TForm1
         TabOrder = 0
       end
     end
-  end
-  object Timer1: TTimer
-    Interval = 10
-    OnTimer = Timer1Timer
-    Left = 55
-    Top = 95
   end
 end
