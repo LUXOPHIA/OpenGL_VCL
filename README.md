@@ -13,7 +13,7 @@ OpenGL のバージョンを辿りながら実装していくことで、新し�
 # OpenGL_VCL
 [VCL：Visual Component Library](https://www.wikiwand.com/ja/Visual_Component_Library) のコンポーネントとして OpenGL の描画領域を埋め込む方法。
 
-![](https://github.com/LUXOPHIA/OpenGL_VCL/raw/master/--------/_SCREENSHOT/OpenGL_VCL-View.png)
+![](https://github.com/LUXOPHIA/OpenGL_VCL/raw/master/--------/_SCREENSHOT/OpenGL_VCL.png)
 
 シェーダのソースコードは、`TMemo` コンポーネントによって書き換えることができ、リアルタイムにコンパイルされて、適宜エラーメッセージも表示されます。
 
