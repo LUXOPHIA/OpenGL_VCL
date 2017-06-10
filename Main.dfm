@@ -31,6 +31,10 @@ object Form1: TForm1
     TabOrder = 0
     object TabSheetV: TTabSheet
       Caption = 'View'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel1: TPanel
         AlignWithMargins = True
         Left = 5
@@ -159,6 +163,10 @@ object Form1: TForm1
     object TabSheetS: TTabSheet
       Caption = 'Shader'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object PageControlS: TPageControl
         AlignWithMargins = True
         Left = 10
@@ -174,6 +182,10 @@ object Form1: TForm1
         TabOrder = 0
         object TabSheetSV: TTabSheet
           Caption = 'Vertex'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object SplitterSV: TSplitter
             Left = 0
             Top = 362
@@ -233,6 +245,10 @@ object Form1: TForm1
         object TabSheetSF: TTabSheet
           Caption = 'Fragment'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object SplitterSF: TSplitter
             Left = 0
             Top = 362
@@ -294,6 +310,10 @@ object Form1: TForm1
     object TabSheetP: TTabSheet
       Caption = 'Program'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object MemoP: TMemo
         AlignWithMargins = True
         Left = 10

@@ -63,7 +63,7 @@ type
     procedure InitCamera;
     procedure InitShaper;
     procedure InitMatery;
-    procedure InitRender;
+    procedure InitViewer;
   end;
 
 var
@@ -247,7 +247,7 @@ end;
 
 //------------------------------------------------------------------------------
 
-procedure TForm1.InitRender;
+procedure TForm1.InitViewer;
 begin
      GLView1.OnPaint := procedure
      begin
@@ -295,7 +295,7 @@ begin
      InitCamera;
      InitShaper;
      InitMatery;
-     InitRender;
+     InitViewer;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
