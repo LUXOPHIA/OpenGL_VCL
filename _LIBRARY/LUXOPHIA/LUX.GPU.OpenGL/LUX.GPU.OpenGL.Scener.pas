@@ -6,11 +6,7 @@ uses System.Generics.Collections,
      Winapi.OpenGL, Winapi.OpenGLext,
      LUX, LUX.D2, LUX.D3, LUX.M4, LUX.Tree,
      LUX.GPU.OpenGL,
-     LUX.GPU.OpenGL.Buffer,
-     LUX.GPU.OpenGL.Buffer.Unif,
-     LUX.GPU.OpenGL.Buffer.Vert,
-     LUX.GPU.OpenGL.Buffer.Elem,
-     LUX.GPU.OpenGL.Matery;
+     LUX.GPU.OpenGL.Buffer.Unifor;
 
 type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【型】
 
@@ -40,7 +36,7 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
      TGLNode = class( TTreeNode<TGLNode>, IGLNode )
      private
      protected
-       _Move :TGLBufferU<TSingleM4>;
+       _Move :TGLUnifor<TSingleM4>;
        ///// アクセス
        function GetScener :TGLScener;
        function GetMove :TSingleM4;
@@ -132,7 +128,7 @@ constructor TGLNode.Create;
 begin
      inherited;
 
-     _Move := TGLBufferU<TSingleM4>.Create( GL_DYNAMIC_DRAW );
+     _Move := TGLUnifor<TSingleM4>.Create( GL_DYNAMIC_DRAW );
      _Move.Count := 1;
 end;
 
