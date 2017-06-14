@@ -108,46 +108,46 @@ const
      _N :Single = 0.1;
      _F :Single = 1000;
 var
-   C :TCameraDat;
+   C :TMyCameraData;
 begin
      with C do
      begin
           Proj := TSingleM4.ProjOrth( -2.5, +2.5, -2.5, +2.5, _N, _F );
 
-          Move := TSingleM4.Translate( 0, +5, 0 )
+          Pose := TSingleM4.Translate( 0, +5, 0 )
                 * TSingleM4.RotateX( DegToRad( -90 ) );
      end;
 
-     _Camera1.Dat := C;
+     _Camera1.Data := C;
 
      with C do
      begin
-          Proj := TSingleM4.ProjOrth( -3, +3, -2, +2, _N, _F );
+          Proj := TSingleM4.ProjOrth( -2, +2, -2, +2, _N, _F );
 
-          Move := TSingleM4.RotateX( DegToRad( -45 ) )
+          Pose := TSingleM4.RotateX( DegToRad( -45 ) )
                 * TSingleM4.Translate( 0, 0, +5 );
      end;
 
-     _Camera2.Dat := C;
+     _Camera2.Data := C;
 
      with C do
      begin
-          Proj := TSingleM4.ProjOrth( -3, +3, -1.5, +1.5, _N, _F );
+          Proj := TSingleM4.ProjOrth( -1.5, +1.5, -1.5, +1.5, _N, _F );
 
-          Move := TSingleM4.Translate( 0, 0, +5 );
+          Pose := TSingleM4.Translate( 0, 0, +5 );
      end;
 
-     _Camera3.Dat := C;
+     _Camera3.Data := C;
 
      with C do
      begin
-          Proj := TSingleM4.ProjPers( -4/4*_N, +4/4*_N, -3/4*_N, +3/4*_N, _N, _F );
+          Proj := TSingleM4.ProjPers( -_N/2, +_N/2, -_N/2, +_N/2, _N, _F );
 
-          Move := TSingleM4.RotateX( DegToRad( -45 ) )
-                * TSingleM4.Translate( 0, 0, +3 );
+          Pose := TSingleM4.RotateX( DegToRad( -45 ) )
+                * TSingleM4.Translate( 0, 0, +4 );
      end;
 
-     _Camera4.Dat := C;
+     _Camera4.Data := C;
 end;
 
 //------------------------------------------------------------------------------
@@ -184,7 +184,7 @@ end;
 
 procedure TForm1.InitShaper;
 var
-   S :TShaperDat;
+   S :TMyShaperData;
 begin
      with _Shaper do
      begin
@@ -192,10 +192,10 @@ begin
 
           with S do
           begin
-               Move := TSingleM4.Identify;
+               Pose := TSingleM4.Identify;
           end;
 
-          Dat := S;
+          Data := S;
      end;
 end;
 
@@ -331,7 +331,7 @@ end;
 procedure TForm1.GLView4MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 var
    P :TSingle2D;
-   S :TShaperDat;
+   S :TMyShaperData;
 begin
      if ssLeft in _MouseS then
      begin
@@ -341,11 +341,11 @@ begin
 
           with S do
           begin
-               Move := TSingleM4.RotateX( DegToRad( _MouseA.Y ) )
+               Pose := TSingleM4.RotateX( DegToRad( _MouseA.Y ) )
                      * TSingleM4.RotateY( DegToRad( _MouseA.X ) );
           end;
 
-          _Shaper.Dat := S;
+          _Shaper.Data := S;
 
           GLView1.Repaint;
           GLView2.Repaint;

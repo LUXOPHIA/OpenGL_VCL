@@ -7,9 +7,9 @@ uses Winapi.OpenGL, Winapi.OpenGLext,
      LUX.GPU.OpenGL,
      LUX.GPU.OpenGL.GLView,
      LUX.GPU.OpenGL.Buffer,
-     LUX.GPU.OpenGL.Buffer.Unif,
-     LUX.GPU.OpenGL.Buffer.Vert,
-     LUX.GPU.OpenGL.Buffer.Elem,
+     LUX.GPU.OpenGL.Buffer.Unifor,
+     LUX.GPU.OpenGL.Buffer.Verter,
+     LUX.GPU.OpenGL.Buffer.Elemer,
      LUX.GPU.OpenGL.Imager,
      LUX.GPU.OpenGL.Imager.VCL,
      LUX.GPU.OpenGL.Shader,
@@ -19,12 +19,12 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
      //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【レコード】
 
-     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TShaperDat
+     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TMyShaperData
 
-     TShaperDat = record
+     TMyShaperData = record
      private
      public
-       Move :TSingleM4;
+       Pose :TSingleM4;
      end;
 
      //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【クラス】
@@ -34,20 +34,15 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
      TMyShaperBase = class
      private
      protected
-       class var _Dats :TGLBufferU<TShaperDat>;
-     protected
-       _Ord :Integer;
+       _Data :TGLUnifor<TMyShaperData>;
        ///// アクセス
-       function GetDat :TShaperDat;
-       procedure SetDat( const Data_:TShaperDat );
+       function GetData :TMyShaperData;
+       procedure SetData( const Data_:TMyShaperData );
      public
-       class constructor Create;
        constructor Create;
        destructor Destroy; override;
-       class destructor Destroy;
        ///// プロパティ
-       property Ord :Integer    read   _Ord;
-       property Dat :TShaperDat read GetDat write SetDat;
+       property Data :TMyShaperData read GetData write SetData;
        ///// メソッド
        procedure Draw; virtual;
      end;
@@ -57,18 +52,18 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
      TMyShaper = class( TMyShaperBase )
      private
      protected
-       _Poss :TGLBufferVS<TSingle3D>;
-       _Nors :TGLBufferVS<TSingle3D>;
-       _Texs :TGLBufferVS<TSingle2D>;
-       _Eles :TGLBufferE32;
+       _Poss :TGLVerterS<TSingle3D>;
+       _Nors :TGLVerterS<TSingle3D>;
+       _Texs :TGLVerterS<TSingle2D>;
+       _Eles :TGLElemer32;
      public
        constructor Create;
        destructor Destroy; override;
        ///// プロパティ
-       property Poss :TGLBufferVS<TSingle3D> read _Poss;
-       property Nors :TGLBufferVS<TSingle3D> read _Nors;
-       property Texs :TGLBufferVS<TSingle2D> read _Texs;
-       property Eles :TGLBufferE32           read _Eles;
+       property Poss :TGLVerterS<TSingle3D> read _Poss;
+       property Nors :TGLVerterS<TSingle3D> read _Nors;
+       property Texs :TGLVerterS<TSingle2D> read _Texs;
+       property Eles :TGLElemer32           read _Eles;
        ///// メソッド
        procedure Draw; override;
        procedure LoadFormFunc( const Func_:TConstFunc<TdSingle2D,TdSingle3D>; const DivX_,DivY_:Integer );
@@ -84,7 +79,7 @@ implementation //###############################################################
 
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【レコード】
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TShaperDat
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TMyShaperData
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& private
 
@@ -100,44 +95,29 @@ implementation //###############################################################
 
 /////////////////////////////////////////////////////////////////////// アクセス
 
-function TMyShaperBase.GetDat :TShaperDat;
+function TMyShaperBase.GetData :TMyShaperData;
 begin
-     Result := _Dats[ _Ord ];
+     Result := _Data[ 0 ];
 end;
 
-procedure TMyShaperBase.SetDat( const Data_:TShaperDat );
+procedure TMyShaperBase.SetData( const Data_:TMyShaperData );
 begin
-     _Dats[ _Ord ] := Data_;
+     _Data[ 0 ] := Data_;
 end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& public
-
-class constructor TMyShaperBase.Create;
-begin
-     inherited;
-
-     _Dats := TGLBufferU<TShaperDat>.Create( GL_DYNAMIC_DRAW );
-end;
 
 constructor TMyShaperBase.Create;
 begin
      inherited;
 
-     with _Dats do
-     begin
-          _Ord := Count;  Count := Count + 1;
-     end;
+     _Data := TGLUnifor<TMyShaperData>.Create( GL_DYNAMIC_DRAW );
+     _Data.Count := 1;
 end;
 
 destructor TMyShaperBase.Destroy;
 begin
-
-     inherited;
-end;
-
-class destructor TMyShaperBase.Destroy;
-begin
-     _Dats.DisposeOf;
+     _Data.DisposeOf;
 
      inherited;
 end;
@@ -146,7 +126,7 @@ end;
 
 procedure TMyShaperBase.Draw;
 begin
-     _Dats.Use( 1{BinP}, _Ord{Offs} );
+     _Data.Use( 2{BinP} );
 end;
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TMyShaper
@@ -163,10 +143,10 @@ constructor TMyShaper.Create;
 begin
      inherited;
 
-     _Poss := TGLBufferVS<TSingle3D>.Create( GL_STATIC_DRAW );
-     _Nors := TGLBufferVS<TSingle3D>.Create( GL_STATIC_DRAW );
-     _Texs := TGLBufferVS<TSingle2D>.Create( GL_STATIC_DRAW );
-     _Eles := TGLBufferE32          .Create( GL_STATIC_DRAW );
+     _Poss := TGLVerterS<TSingle3D>.Create( GL_STATIC_DRAW );
+     _Nors := TGLVerterS<TSingle3D>.Create( GL_STATIC_DRAW );
+     _Texs := TGLVerterS<TSingle2D>.Create( GL_STATIC_DRAW );
+     _Eles := TGLElemer32          .Create( GL_STATIC_DRAW );
 end;
 
 destructor TMyShaper.Destroy;
