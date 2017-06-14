@@ -3,14 +3,10 @@
 interface //#################################################################### ■
 
 uses Winapi.OpenGL, Winapi.OpenGLext,
-     LUX, LUX.D2, LUX.D3, LUX.M4, LUX.Tree,
+     LUX, LUX.M4, LUX.Tree,
      LUX.GPU.OpenGL,
-     LUX.GPU.OpenGL.Buffer,
-     LUX.GPU.OpenGL.Buffer.Unif,
-     LUX.GPU.OpenGL.Buffer.Vert,
-     LUX.GPU.OpenGL.Buffer.Elem,
-     LUX.GPU.OpenGL.Scener,
-     LUX.GPU.OpenGL.Matery;
+     LUX.GPU.OpenGL.Buffer.Unifor,
+     LUX.GPU.OpenGL.Scener;
 
 type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【型】
 
@@ -25,7 +21,7 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        const _N :Single = 0.1;
        const _F :Single = 1000;
      protected
-       _Proj :TGLBufferU<TSingleM4>;
+       _Proj :TGLUnifor<TSingleM4>;
        ///// アクセス
        function GetProj :TSingleM4; virtual;
        procedure SetProj( const Proj_:TSingleM4 ); virtual;
@@ -108,7 +104,7 @@ constructor TGLCamera.Create( const Paren_:ITreeNode );
 begin
      inherited;
 
-     _Proj := TGLBufferU<TSingleM4>.Create( GL_DYNAMIC_DRAW );
+     _Proj := TGLUnifor<TSingleM4>.Create( GL_STATIC_DRAW );
      _Proj.Count := 1;
 end;
 
