@@ -42,11 +42,15 @@ type
         MemoP: TMemo;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure MemoSVSChange(Sender: TObject);
-    procedure MemoSFSChange(Sender: TObject);
+    procedure GLViewer1DblClick(Sender: TObject);
+    procedure GLViewer2DblClick(Sender: TObject);
+    procedure GLViewer3DblClick(Sender: TObject);
+    procedure GLViewer4DblClick(Sender: TObject);
     procedure GLViewer4MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure GLViewer4MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure GLViewer4MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure MemoSVSChange(Sender: TObject);
+    procedure MemoSFSChange(Sender: TObject);
   private
     { Private 宣言 }
     _MouseA :TSingle2D;
@@ -249,14 +253,44 @@ end;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-procedure TForm1.MemoSVSChange(Sender: TObject);
+procedure TForm1.GLViewer1DblClick(Sender: TObject);
 begin
-     EditShader( _Matery.ShaderV, MemoSVS );
+     with GLViewer1.MakeScreenShot do
+     begin
+          SaveToFile( 'Viewer1.bmp' );
+
+          DisposeOf;
+     end;
 end;
 
-procedure TForm1.MemoSFSChange(Sender: TObject);
+procedure TForm1.GLViewer2DblClick(Sender: TObject);
 begin
-     EditShader( _Matery.ShaderF, MemoSFS );
+     with GLViewer2.MakeScreenShot do
+     begin
+          SaveToFile( 'Viewer2.bmp' );
+
+          DisposeOf;
+     end;
+end;
+
+procedure TForm1.GLViewer3DblClick(Sender: TObject);
+begin
+     with GLViewer3.MakeScreenShot do
+     begin
+          SaveToFile( 'Viewer3.bmp' );
+
+          DisposeOf;
+     end;
+end;
+
+procedure TForm1.GLViewer4DblClick(Sender: TObject);
+begin
+     with GLViewer4.MakeScreenShot do
+     begin
+          SaveToFile( 'Viewer4.bmp' );
+
+          DisposeOf;
+     end;
 end;
 
 //------------------------------------------------------------------------------
@@ -294,6 +328,18 @@ begin
      GLViewer4MouseMove( Sender, Shift, X, Y );
 
      _MouseS := [];
+end;
+
+//------------------------------------------------------------------------------
+
+procedure TForm1.MemoSVSChange(Sender: TObject);
+begin
+     EditShader( _Matery.ShaderV, MemoSVS );
+end;
+
+procedure TForm1.MemoSFSChange(Sender: TObject);
+begin
+     EditShader( _Matery.ShaderF, MemoSFS );
 end;
 
 end. //######################################################################### ■
