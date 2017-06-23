@@ -57,12 +57,12 @@ type
     _Camera2 :TMyCamera;
     _Camera3 :TMyCamera;
     _Camera4 :TMyCamera;
-    _Shaper  :TMyShaper;
     _Matery  :TMyMatery;
+    _Shaper  :TMyShaper;
     ///// メソッド
     procedure InitCamera;
-    procedure InitShaper;
     procedure InitMatery;
+    procedure InitShaper;
     procedure InitViewer;
   end;
 
@@ -152,6 +152,52 @@ end;
 
 //------------------------------------------------------------------------------
 
+procedure TForm1.InitMatery;
+begin
+     with _Matery do
+     begin
+          with ShaderV do
+          begin
+               OnCompiled := procedure
+               begin
+                    MemoSVE.Lines.Assign( Errors );
+
+                    _Matery.Engine.Link;
+               end;
+
+               Source.LoadFromFile( '..\..\_DATA\ShaderV.glsl' );
+
+               MemoSVS.Lines.Assign( Source );
+          end;
+
+          with ShaderF do
+          begin
+               OnCompiled := procedure
+               begin
+                    MemoSFE.Lines.Assign( Errors );
+
+                    _Matery.Engine.Link;
+               end;
+
+               Source.LoadFromFile( '..\..\_DATA\ShaderF.glsl' );
+
+               MemoSFS.Lines.Assign( Source );
+          end;
+
+          with Engine do
+          begin
+               OnLinked := procedure
+               begin
+                    MemoP.Lines.Assign( Errors );
+               end;
+          end;
+
+          Imager.LoadFromFile( '..\..\_DATA\Spherical_1024x1024.bmp' );
+     end;
+end;
+
+//------------------------------------------------------------------------------
+
 function BraidedTorus( const T_:TdSingle2D ) :TdSingle3D;
 const
      LoopR :Single = 1.0;  LoopN :Integer = 3; 
@@ -201,52 +247,6 @@ end;
 
 //------------------------------------------------------------------------------
 
-procedure TForm1.InitMatery;
-begin
-     with _Matery do
-     begin
-          with ShaderV do
-          begin
-               OnCompiled := procedure
-               begin
-                    MemoSVE.Lines.Assign( Errors );
-
-                    _Matery.Engine.Link;
-               end;
-
-               Source.LoadFromFile( '..\..\_DATA\ShaderV.glsl' );
-
-               MemoSVS.Lines.Assign( Source );
-          end;
-
-          with ShaderF do
-          begin
-               OnCompiled := procedure
-               begin
-                    MemoSFE.Lines.Assign( Errors );
-
-                    _Matery.Engine.Link;
-               end;
-
-               Source.LoadFromFile( '..\..\_DATA\ShaderF.glsl' );
-
-               MemoSFS.Lines.Assign( Source );
-          end;
-
-          with Engine do
-          begin
-               OnLinked := procedure
-               begin
-                    MemoP.Lines.Assign( Errors );
-               end;
-          end;
-
-          Imager.LoadFromFile( '..\..\_DATA\Spherical_1024x1024.bmp' );
-     end;
-end;
-
-//------------------------------------------------------------------------------
-
 procedure TForm1.InitViewer;
 begin
      GLViewer1.OnPaint := procedure
@@ -289,12 +289,12 @@ begin
      _Camera2 := TMyCamera.Create;
      _Camera3 := TMyCamera.Create;
      _Camera4 := TMyCamera.Create;
-     _Shaper  := TMyShaper.Create;
      _Matery  := TMyMatery.Create;
+     _Shaper  := TMyShaper.Create;
 
      InitCamera;
-     InitShaper;
      InitMatery;
+     InitShaper;
      InitViewer;
 end;
 
@@ -304,8 +304,8 @@ begin
      _Camera2.DisposeOf;
      _Camera3.DisposeOf;
      _Camera4.DisposeOf;
-     _Shaper .DisposeOf;
      _Matery .DisposeOf;
+     _Shaper .DisposeOf;
 end;
 
 ////////////////////////////////////////////////////////////////////////////////
