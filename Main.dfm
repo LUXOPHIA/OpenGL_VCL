@@ -29,7 +29,7 @@ object Form1: TForm1
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 0
-    inline GLView1: TGLView
+    inline GLViewer1: TGLViewer
       AlignWithMargins = True
       Left = 5
       Top = 5
@@ -53,7 +53,7 @@ object Form1: TForm1
       ExplicitTop = 5
       ExplicitWidth = 300
     end
-    inline GLView2: TGLView
+    inline GLViewer2: TGLViewer
       AlignWithMargins = True
       Left = 5
       Top = 315
@@ -91,7 +91,7 @@ object Form1: TForm1
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    inline GLView3: TGLView
+    inline GLViewer3: TGLViewer
       AlignWithMargins = True
       Left = 5
       Top = 5
@@ -114,7 +114,7 @@ object Form1: TForm1
       ExplicitTop = 5
       ExplicitHeight = 200
     end
-    inline GLView4: TGLView
+    inline GLViewer4: TGLViewer
       AlignWithMargins = True
       Left = 5
       Top = 215
