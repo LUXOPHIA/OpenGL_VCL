@@ -28,6 +28,10 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure GLViewer1DblClick(Sender: TObject);
+    procedure GLViewer2DblClick(Sender: TObject);
+    procedure GLViewer3DblClick(Sender: TObject);
+    procedure GLViewer4DblClick(Sender: TObject);
   private
     { Private 宣言 }
     _Angle :Single;
@@ -209,6 +213,48 @@ begin
      GLViewer2.Repaint;
      GLViewer3.Repaint;
      GLViewer4.Repaint;
+end;
+
+//------------------------------------------------------------------------------
+
+procedure TForm1.GLViewer1DblClick(Sender: TObject);
+begin
+     with GLViewer1.MakeScreenShot do
+     begin
+          SaveToFile( 'Viewer1.bmp' );
+
+          DisposeOf;
+     end;
+end;
+
+procedure TForm1.GLViewer2DblClick(Sender: TObject);
+begin
+     with GLViewer2.MakeScreenShot do
+     begin
+          SaveToFile( 'Viewer2.bmp' );
+
+          DisposeOf;
+     end;
+end;
+
+procedure TForm1.GLViewer3DblClick(Sender: TObject);
+begin
+     with GLViewer3.MakeScreenShot do
+     begin
+          SaveToFile( 'Viewer3.bmp' );
+
+          DisposeOf;
+     end;
+end;
+
+procedure TForm1.GLViewer4DblClick(Sender: TObject);
+begin
+     with GLViewer4.MakeScreenShot do
+     begin
+          SaveToFile( 'Viewer4.bmp' );
+
+          DisposeOf;
+     end;
 end;
 
 end. //######################################################################### ■
