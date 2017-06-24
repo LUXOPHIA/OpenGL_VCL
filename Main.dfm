@@ -41,7 +41,6 @@ object Form1: TForm1
       Margins.Bottom = 5
       Align = alTop
       DoubleBuffered = False
-      Enabled = False
       Color = clGray
       Ctl3D = True
       ParentBackground = False
@@ -49,6 +48,7 @@ object Form1: TForm1
       ParentCtl3D = False
       ParentDoubleBuffered = False
       TabOrder = 0
+      OnDblClick = GLViewer1DblClick
       ExplicitLeft = 5
       ExplicitTop = 5
       ExplicitWidth = 300
@@ -72,6 +72,7 @@ object Form1: TForm1
       ParentCtl3D = False
       ParentDoubleBuffered = False
       TabOrder = 1
+      OnDblClick = GLViewer2DblClick
       ExplicitLeft = 5
       ExplicitTop = 315
       ExplicitWidth = 300
@@ -110,6 +111,7 @@ object Form1: TForm1
       ParentCtl3D = False
       ParentDoubleBuffered = False
       TabOrder = 0
+      OnDblClick = GLViewer3DblClick
       ExplicitLeft = 5
       ExplicitTop = 5
       ExplicitHeight = 200
@@ -133,6 +135,7 @@ object Form1: TForm1
       ParentCtl3D = False
       ParentDoubleBuffered = False
       TabOrder = 1
+      OnDblClick = GLViewer4DblClick
       ExplicitLeft = 5
       ExplicitTop = 215
     end
