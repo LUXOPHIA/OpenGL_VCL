@@ -66,7 +66,7 @@ type
     _Camera3 :TGLCameraOrth;
     _Camera4 :TGLCameraPers;
     _Matery  :IGLMateryImag;
-    _Shaper  :TGLShaperPoly;
+    _Shaper  :TGLShaperFace;
     ///// メソッド
     procedure MakeCamera;
     procedure MakeMatery;
@@ -221,7 +221,7 @@ end;
 
 procedure TForm1.MakeShaper;
 begin
-     _Shaper := TGLShaperPoly.Create( _Scener );
+     _Shaper := TGLShaperFace.Create( _Scener );
 
      with _Shaper do
      begin
