@@ -121,31 +121,31 @@ begin
      begin
           Size := 5;
 
-          Pose := TSingleM4.Translate( 0, +5, 0 )
-                * TSingleM4.RotateX( DegToRad( -90 ) );
+          RelaPose := TSingleM4.Translate( 0, +5, 0 )
+                    * TSingleM4.RotateX( DegToRad( -90 ) );
      end;
 
      with _Camera2 do
      begin
           Size := 4;
 
-          Pose := TSingleM4.RotateX( DegToRad( -45 ) )
-                * TSingleM4.Translate( 0, 0, +5 );
+          RelaPose := TSingleM4.RotateX( DegToRad( -45 ) )
+                    * TSingleM4.Translate( 0, 0, +5 );
      end;
 
      with _Camera3 do
      begin
           Size := 3;
 
-          Pose := TSingleM4.Translate( 0, 0, +5 );
+          RelaPose := TSingleM4.Translate( 0, 0, +5 );
      end;
 
      with _Camera4 do
      begin
           Angl := DegToRad( 60{°} );
 
-          Pose := TSingleM4.RotateX( DegToRad( -45 ) )
-                * TSingleM4.Translate( 0, 0, +3 );
+          RelaPose := TSingleM4.RotateX( DegToRad( -45 ) )
+                    * TSingleM4.Translate( 0, 0, +3 );
      end;
 
      GLViewer1.Camera := _Camera1;
@@ -167,6 +167,13 @@ begin
                Source.LoadFromFile( '..\..\_DATA\ShaderV.glsl' );
 
                MemoSVS.Lines.Assign( Source );
+          end;
+
+          with ShaderG do
+          begin
+               Source.LoadFromFile( '..\..\_DATA\ShaderG.glsl' );
+
+               //MemoSGS.Lines.Assign( Source );
           end;
 
           with ShaderF do
@@ -311,8 +318,8 @@ begin
 
           _MouseA := _MouseA + ( P - _MouseP );
 
-          _Shaper.Pose := TSingleM4.RotateX( DegToRad( _MouseA.Y ) )
-                        * TSingleM4.RotateY( DegToRad( _MouseA.X ) );
+          _Shaper.RelaPose := TSingleM4.RotateX( DegToRad( _MouseA.Y ) )
+                            * TSingleM4.RotateY( DegToRad( _MouseA.X ) );
 
           GLViewer1.Repaint;
           GLViewer2.Repaint;
