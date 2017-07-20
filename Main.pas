@@ -54,7 +54,7 @@ type
   private
     { Private 宣言 }
     _MouseA :TSingle2D;
-    _MouseS :TShiftState;
+    _MouseS :TGLNode;
     _MouseP :TSingle2D;
     ///// メソッド
     procedure EditShader( const Shader_:TGLShader; const Memo_:TMemo );
@@ -242,9 +242,9 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-     _MouseS := [];
-     _MouseP := TSingle2D.Create( 0, 0 );
      _MouseA := TSingle2D.Create( 0, 0 );
+     _MouseS := nil;
+     _MouseP := TSingle2D.Create( 0, 0 );
 
      _Scener := TGLScener.Create;
 
@@ -304,7 +304,7 @@ end;
 
 procedure TForm1.GLViewer4MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-     _MouseS := Shift;
+     _MouseS := GLViewer4.PickObject( X, Y );
      _MouseP := TSingle2D.Create( X, Y );
 end;
 
@@ -312,7 +312,7 @@ procedure TForm1.GLViewer4MouseMove(Sender: TObject; Shift: TShiftState; X, Y: I
 var
    P :TSingle2D;
 begin
-     if ssLeft in _MouseS then
+     if Assigned( _MouseS ) then
      begin
           P := TSingle2D.Create( X, Y );
 
@@ -334,7 +334,7 @@ procedure TForm1.GLViewer4MouseUp(Sender: TObject; Button: TMouseButton; Shift: 
 begin
      GLViewer4MouseMove( Sender, Shift, X, Y );
 
-     _MouseS := [];
+     _MouseS := nil;
 end;
 
 //------------------------------------------------------------------------------
