@@ -12,9 +12,9 @@ uses
   LUX, LUX.D3,
   LUX.GPU.OpenGL,
   LUX.GPU.OpenGL.Viewer,
-  LUX.GPU.OpenGL.Buffer,
-  LUX.GPU.OpenGL.Buffer.Verter,
-  LUX.GPU.OpenGL.Buffer.Elemer;
+  LUX.GPU.OpenGL.Atom.Buffer,
+  LUX.GPU.OpenGL.Atom.Buffer.Verter,
+  LUX.GPU.OpenGL.Atom.Buffer.Elemer;
 
 type
   TForm1 = class(TForm)
@@ -39,7 +39,7 @@ type
     { Public 宣言 }
     _VerterP :TGLVerterS<TSingle3D>;
     _VerterC :TGLVerterS<TAlphaColorF>;
-    _Elemer  :TGLElemerTria32;
+    _Elemer  :TGLElemerFace32;
     ///// メソッド
     procedure InitViewer;
     procedure InitShaper;
@@ -190,7 +190,7 @@ begin
 
      _VerterP := TGLVerterS<TSingle3D>   .Create( GL_STATIC_DRAW );
      _VerterC := TGLVerterS<TAlphaColorF>.Create( GL_STATIC_DRAW );
-     _Elemer  := TGLElemerTria32         .Create( GL_STATIC_DRAW );
+     _Elemer  := TGLElemerFace32         .Create( GL_STATIC_DRAW );
 
      InitViewer;
      InitShaper;
