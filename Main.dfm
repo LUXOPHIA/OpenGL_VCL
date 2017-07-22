@@ -233,6 +233,70 @@ object Form1: TForm1
             OnChange = MemoSVSChange
           end
         end
+        object TabSheetSG: TTabSheet
+          Caption = 'Geometry'
+          ImageIndex = 2
+          ExplicitLeft = 0
+          object SplitterSG: TSplitter
+            Left = 0
+            Top = 362
+            Width = 702
+            Height = 10
+            Cursor = crVSplit
+            Align = alBottom
+            Color = clWhite
+            MinSize = 50
+            ParentColor = False
+            ResizeStyle = rsUpdate
+            ExplicitTop = 360
+          end
+          object MemoSGE: TMemo
+            AlignWithMargins = True
+            Left = 10
+            Top = 372
+            Width = 682
+            Height = 100
+            Margins.Left = 10
+            Margins.Top = 0
+            Margins.Right = 10
+            Margins.Bottom = 10
+            Align = alBottom
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = #65325#65331' '#12468#12471#12483#12463
+            Font.Style = []
+            ParentFont = False
+            ReadOnly = True
+            ScrollBars = ssBoth
+            TabOrder = 0
+            ExplicitLeft = 15
+            ExplicitTop = 377
+          end
+          object MemoSGS: TMemo
+            AlignWithMargins = True
+            Left = 10
+            Top = 10
+            Width = 682
+            Height = 352
+            Margins.Left = 10
+            Margins.Top = 10
+            Margins.Right = 10
+            Margins.Bottom = 0
+            Align = alClient
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = #65325#65331' '#12468#12471#12483#12463
+            Font.Style = []
+            ParentFont = False
+            ScrollBars = ssBoth
+            TabOrder = 1
+            OnChange = MemoSGSChange
+            ExplicitLeft = 15
+            ExplicitTop = 15
+          end
+        end
         object TabSheetSF: TTabSheet
           Caption = 'Fragment'
           ImageIndex = 1

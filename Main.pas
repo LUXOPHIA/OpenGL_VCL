@@ -12,7 +12,7 @@ uses
   LUX, LUX.D1, LUX.D2, LUX.D3, LUX.M4,
   LUX.GPU.OpenGL,
   LUX.GPU.OpenGL.Viewer,
-  LUX.GPU.OpenGL.Shader,
+  LUX.GPU.OpenGL.Atom.Shader,
   LUX.GPU.OpenGL.Scener,
   LUX.GPU.OpenGL.Camera,
   LUX.GPU.OpenGL.Shaper,
@@ -34,6 +34,10 @@ type
             MemoSVS: TMemo;
             SplitterSV: TSplitter;
             MemoSVE: TMemo;
+          TabSheetSG: TTabSheet;
+            MemoSGS: TMemo;
+            SplitterSG: TSplitter;
+            MemoSGE: TMemo;
           TabSheetSF: TTabSheet;
             MemoSFS: TMemo;
             SplitterSF: TSplitter;
@@ -50,11 +54,12 @@ type
     procedure GLViewer4MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure GLViewer4MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure MemoSVSChange(Sender: TObject);
+    procedure MemoSGSChange(Sender: TObject);
     procedure MemoSFSChange(Sender: TObject);
   private
     { Private 宣言 }
     _MouseA :TSingle2D;
-    _MouseS :TGLNode;
+    _MouseS :TShiftState;
     _MouseP :TSingle2D;
     ///// メソッド
     procedure EditShader( const Shader_:TGLShader; const Memo_:TMemo );
@@ -65,7 +70,7 @@ type
     _Camera2 :TGLCameraOrth;
     _Camera3 :TGLCameraOrth;
     _Camera4 :TGLCameraPers;
-    _Matery  :IGLMateryImag;
+    _Matery  :TGLMateryImagG;
     _Shaper  :TGLShaperFace;
     ///// メソッド
     procedure MakeCamera;
@@ -90,18 +95,9 @@ procedure TForm1.EditShader( const Shader_:TGLShader; const Memo_:TMemo );
 begin
      if Memo_.Focused then
      begin
-          TabSheetV.Enabled := False;
-
           TIdleTask.Run( procedure
           begin
                Shader_.Source.Assign( Memo_.Lines );
-
-               with _Matery.Engine do
-               begin
-                    TabSheetV.Enabled := Status;
-
-                    if not Status then PageControl1.TabIndex := 1;
-               end;
           end );
      end;
 end;
@@ -121,31 +117,31 @@ begin
      begin
           Size := 5;
 
-          RelaPose := TSingleM4.Translate( 0, +5, 0 )
-                    * TSingleM4.RotateX( DegToRad( -90 ) );
+          Pose := TSingleM4.Translate( 0, +5, 0 )
+                * TSingleM4.RotateX( DegToRad( -90 ) );
      end;
 
      with _Camera2 do
      begin
           Size := 4;
 
-          RelaPose := TSingleM4.RotateX( DegToRad( -45 ) )
-                    * TSingleM4.Translate( 0, 0, +5 );
+          Pose := TSingleM4.RotateX( DegToRad( -45 ) )
+                * TSingleM4.Translate( 0, 0, +5 );
      end;
 
      with _Camera3 do
      begin
           Size := 3;
 
-          RelaPose := TSingleM4.Translate( 0, 0, +5 );
+          Pose := TSingleM4.Translate( 0, 0, +5 );
      end;
 
      with _Camera4 do
      begin
           Angl := DegToRad( 60{°} );
 
-          RelaPose := TSingleM4.RotateX( DegToRad( -45 ) )
-                    * TSingleM4.Translate( 0, 0, +3 );
+          Pose := TSingleM4.RotateX( DegToRad( -45 ) )
+                * TSingleM4.Translate( 0, 0, +2 );
      end;
 
      GLViewer1.Camera := _Camera1;
@@ -158,7 +154,7 @@ end;
 
 procedure TForm1.MakeMatery;
 begin
-     _Matery := TGLMateryImag.Create;
+     _Matery := TGLMateryImagG.Create;
 
      with _Matery do
      begin
@@ -167,13 +163,23 @@ begin
                Source.LoadFromFile( '..\..\_DATA\ShaderV.glsl' );
 
                MemoSVS.Lines.Assign( Source );
+
+               OnCompiled := procedure
+               begin
+                    MemoSVE.Lines.Assign( Errors );
+               end;
           end;
 
           with ShaderG do
           begin
                Source.LoadFromFile( '..\..\_DATA\ShaderG.glsl' );
 
-               //MemoSGS.Lines.Assign( Source );
+               MemoSGS.Lines.Assign( Source );
+
+               OnCompiled := procedure
+               begin
+                    MemoSGE.Lines.Assign( Errors );
+               end;
           end;
 
           with ShaderF do
@@ -181,15 +187,28 @@ begin
                Source.LoadFromFile( '..\..\_DATA\ShaderF.glsl' );
 
                MemoSFS.Lines.Assign( Source );
+
+               OnCompiled := procedure
+               begin
+                    MemoSFE.Lines.Assign( Errors );
+               end;
           end;
 
-          Imager.LoadFromFile( '..\..\_DATA\Spherical_1024x1024.bmp' );
-
-          OnBuilded := procedure
+          with Progra do
           begin
-               MemoSVE.Lines.Assign( ShaderV.Errors );
-               MemoSFE.Lines.Assign( ShaderF.Errors );
-               MemoP  .Lines.Assign( Engine .Errors );
+               OnLinked := procedure
+               begin
+                    MemoP.Lines.Assign( Errors );
+
+                    TabSheetV.Enabled := Status;
+
+                    if not Status then PageControl1.TabIndex := 1;
+               end;
+          end;
+
+          with Imager do
+          begin
+               LoadFromFile( '..\..\_DATA\Spherical_1024x1024.bmp' );
           end;
      end;
 end;
@@ -242,10 +261,6 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-     _MouseA := TSingle2D.Create( 0, 0 );
-     _MouseS := nil;
-     _MouseP := TSingle2D.Create( 0, 0 );
-
      _Scener := TGLScener.Create;
 
      MakeCamera;
@@ -304,7 +319,7 @@ end;
 
 procedure TForm1.GLViewer4MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-     _MouseS := GLViewer4.PickObject( X, Y );
+     _MouseS := Shift;
      _MouseP := TSingle2D.Create( X, Y );
 end;
 
@@ -312,14 +327,14 @@ procedure TForm1.GLViewer4MouseMove(Sender: TObject; Shift: TShiftState; X, Y: I
 var
    P :TSingle2D;
 begin
-     if Assigned( _MouseS ) then
+     if ssLeft in _MouseS then
      begin
           P := TSingle2D.Create( X, Y );
 
           _MouseA := _MouseA + ( P - _MouseP );
 
-          _Shaper.RelaPose := TSingleM4.RotateX( DegToRad( _MouseA.Y ) )
-                            * TSingleM4.RotateY( DegToRad( _MouseA.X ) );
+          _Shaper.Pose := TSingleM4.RotateX( DegToRad( _MouseA.Y ) )
+                        * TSingleM4.RotateY( DegToRad( _MouseA.X ) );
 
           GLViewer1.Repaint;
           GLViewer2.Repaint;
@@ -334,7 +349,7 @@ procedure TForm1.GLViewer4MouseUp(Sender: TObject; Button: TMouseButton; Shift: 
 begin
      GLViewer4MouseMove( Sender, Shift, X, Y );
 
-     _MouseS := nil;
+     _MouseS := [];
 end;
 
 //------------------------------------------------------------------------------
@@ -342,6 +357,11 @@ end;
 procedure TForm1.MemoSVSChange(Sender: TObject);
 begin
      EditShader( _Matery.ShaderV, MemoSVS );
+end;
+
+procedure TForm1.MemoSGSChange(Sender: TObject);
+begin
+     EditShader( _Matery.ShaderG, MemoSGS );
 end;
 
 procedure TForm1.MemoSFSChange(Sender: TObject);
