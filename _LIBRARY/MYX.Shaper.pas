@@ -6,14 +6,14 @@ uses Winapi.OpenGL, Winapi.OpenGLext,
      LUX, LUX.D1, LUX.D2, LUX.D3, LUX.M4,
      LUX.GPU.OpenGL,
      LUX.GPU.OpenGL.Viewer,
-     LUX.GPU.OpenGL.Buffer,
-     LUX.GPU.OpenGL.Buffer.Unifor,
-     LUX.GPU.OpenGL.Buffer.Verter,
-     LUX.GPU.OpenGL.Buffer.Elemer,
-     LUX.GPU.OpenGL.Imager,
-     LUX.GPU.OpenGL.Imager.VCL,
-     LUX.GPU.OpenGL.Shader,
-     LUX.GPU.OpenGL.Engine;
+     LUX.GPU.OpenGL.Atom.Buffer,
+     LUX.GPU.OpenGL.Atom.Buffer.Unifor,
+     LUX.GPU.OpenGL.Atom.Buffer.Verter,
+     LUX.GPU.OpenGL.Atom.Buffer.Elemer,
+     LUX.GPU.OpenGL.Atom.Imager,
+     LUX.GPU.OpenGL.Atom.Imager.VCL,
+     LUX.GPU.OpenGL.Atom.Shader,
+     LUX.GPU.OpenGL.Atom.Engine;
 
 type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【型】
 
@@ -55,7 +55,7 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        _PosBuf :TGLVerterS<TSingle3D>;
        _NorBuf :TGLVerterS<TSingle3D>;
        _TexBuf :TGLVerterS<TSingle2D>;
-       _EleBuf :TGLElemerTria32;
+       _EleBuf :TGLElemerFace32;
      public
        constructor Create;
        destructor Destroy; override;
@@ -63,7 +63,7 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        property PosBuf :TGLVerterS<TSingle3D> read _PosBuf;
        property NorBuf :TGLVerterS<TSingle3D> read _NorBuf;
        property TexBuf :TGLVerterS<TSingle2D> read _TexBuf;
-       property EleBuf :TGLElemerTria32       read _EleBuf;
+       property EleBuf :TGLElemerFace32       read _EleBuf;
        ///// メソッド
        procedure Draw; override;
        procedure LoadFormFunc( const Func_:TConstFunc<TdSingle2D,TdSingle3D>; const DivX_,DivY_:Integer );
@@ -146,7 +146,7 @@ begin
      _PosBuf := TGLVerterS<TSingle3D>.Create( GL_STATIC_DRAW );
      _NorBuf := TGLVerterS<TSingle3D>.Create( GL_STATIC_DRAW );
      _TexBuf := TGLVerterS<TSingle2D>.Create( GL_STATIC_DRAW );
-     _EleBuf := TGLElemerTria32      .Create( GL_STATIC_DRAW );
+     _EleBuf := TGLElemerFace32      .Create( GL_STATIC_DRAW );
 end;
 
 destructor TMyShaper.Destroy;
