@@ -10,7 +10,8 @@ uses
   System.UITypes,
   Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
   LUX, LUX.D1, LUX.D2, LUX.D3, LUX.M4,
-  LUX.GPU.OpenGL.Viewer, LUX.GPU.OpenGL.Shader,
+  LUX.GPU.OpenGL.Viewer,
+  LUX.GPU.OpenGL.Atom.Shader,
   MYX.Camera,
   MYX.Shaper,
   MYX.Matery;
@@ -148,7 +149,7 @@ begin
           Proj := TSingleM4.ProjPers( -_N/2, +_N/2, -_N/2, +_N/2, _N, _F );
 
           Pose := TSingleM4.RotateX( DegToRad( -45 ) )
-                * TSingleM4.Translate( 0, 0, +4 );
+                * TSingleM4.Translate( 0, 0, +2 );
      end;
 
      _Camera4.Data := C;
