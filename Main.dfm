@@ -236,7 +236,6 @@ object Form1: TForm1
         object TabSheetSG: TTabSheet
           Caption = 'Geometry'
           ImageIndex = 2
-          ExplicitLeft = 0
           object SplitterSG: TSplitter
             Left = 0
             Top = 362
@@ -270,8 +269,6 @@ object Form1: TForm1
             ReadOnly = True
             ScrollBars = ssBoth
             TabOrder = 0
-            ExplicitLeft = 15
-            ExplicitTop = 377
           end
           object MemoSGS: TMemo
             AlignWithMargins = True
@@ -293,8 +290,6 @@ object Form1: TForm1
             ScrollBars = ssBoth
             TabOrder = 1
             OnChange = MemoSGSChange
-            ExplicitLeft = 15
-            ExplicitTop = 15
           end
         end
         object TabSheetSF: TTabSheet
