@@ -12,11 +12,11 @@ uses
   LUX, LUX.D3,
   LUX.GPU.OpenGL,
   LUX.GPU.OpenGL.Viewer,
-  LUX.GPU.OpenGL.Buffer,
-  LUX.GPU.OpenGL.Buffer.Verter,
-  LUX.GPU.OpenGL.Buffer.Elemer,
-  LUX.GPU.OpenGL.Shader,
-  LUX.GPU.OpenGL.Progra;
+  LUX.GPU.OpenGL.Atom.Buffer,
+  LUX.GPU.OpenGL.Atom.Buffer.Verter,
+  LUX.GPU.OpenGL.Atom.Buffer.Elemer,
+  LUX.GPU.OpenGL.Atom.Shader,
+  LUX.GPU.OpenGL.Atom.Progra;
 
 type
   TForm1 = class(TForm)
@@ -41,7 +41,7 @@ type
     { Public 宣言 }
     _VerterP :TGLVerterS<TSingle3D>;
     _VerterC :TGLVerterS<TAlphaColorF>;
-    _Elemer  :TGLElemertria32;
+    _Elemer  :TGLElemerFace32;
     _ShaderV :TGLShaderV;
     _ShaderF :TGLShaderF;
     _Progra  :TGLProgra;
@@ -255,7 +255,7 @@ begin
 
      _VerterP := TGLVerterS<TSingle3D>   .Create( GL_STATIC_DRAW );
      _VerterC := TGLVerterS<TAlphaColorF>.Create( GL_STATIC_DRAW );
-     _Elemer  := TGLElemerTria32         .Create( GL_STATIC_DRAW );
+     _Elemer  := TGLElemerFace32         .Create( GL_STATIC_DRAW );
 
      _ShaderV := TGLShaderV              .Create;
      _ShaderF := TGLShaderF              .Create;
