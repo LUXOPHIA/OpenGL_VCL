@@ -16,6 +16,7 @@ uses
   LUX.GPU.OpenGL.Scener,
   LUX.GPU.OpenGL.Camera,
   LUX.GPU.OpenGL.Shaper,
+  LUX.GPU.OpenGL.Matery,
   LUX.GPU.OpenGL.Matery.VCL;
 
 type
