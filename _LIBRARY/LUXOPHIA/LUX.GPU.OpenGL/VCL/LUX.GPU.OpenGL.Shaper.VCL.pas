@@ -98,8 +98,8 @@ begin
 
      S := _BMP.Canvas.TextExtent( _Text );
 
-     _SizeX := S.Width  / 2;
-     _SizeY := S.Height / 2;
+     _SizeX := S.Width  / 200;
+     _SizeY := S.Height / 200;
 
      with _BMP do
      begin
@@ -107,7 +107,7 @@ begin
 
           with Canvas do
           begin
-               Brush.Color := TColors.Black;
+               Brush.Color := $FF000000;
                FillRect( TRect.Create( 0, 0, S.Width, S.Height ) );
 
                TextOut( 0, 0, _Text );

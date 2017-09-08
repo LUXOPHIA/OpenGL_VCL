@@ -16,6 +16,7 @@ uses
   LUX.GPU.OpenGL.Scener,
   LUX.GPU.OpenGL.Camera,
   LUX.GPU.OpenGL.Shaper,
+  LUX.GPU.OpenGL.Shaper.VCL,
   LUX.GPU.OpenGL.Matery.VCL;
 
 type
@@ -254,6 +255,13 @@ begin
           LoadFromFunc( BraidedTorus, 1300, 100 );
 
           Matery := _Matery;
+     end;
+
+     with TGLShaperText.Create( _Scener ) do
+     begin
+          Font.Color := TColors.White;
+          Font.Size  := 100;
+          Text := 'あいうえお';
      end;
 end;
 

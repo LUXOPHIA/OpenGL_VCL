@@ -253,8 +253,8 @@ begin
             Add( '  M[ 0 ] = vec4( normalize( cross( M[ 1 ].xyz, M[ 2 ].xyz ) ), 0 );' );
 
             Add( '  _Result.Pos =                     M     * _SenderPos;' );
-            Add( '  _Result.Nor = transpose( inverse( _ShaperPose ) ) * _SenderNor;' );
-            Add( '  _Result.Tex =                                       _SenderTex;' );
+            Add( '  _Result.Nor = transpose( inverse( M ) ) * _SenderNor;' );
+            Add( '  _Result.Tex =                             _SenderTex;' );
             Add( '  gl_Position = _ViewerScal * _CameraProj * inverse( _CameraPose ) * _Result.Pos;' );
             Add( '}' );
 
@@ -284,7 +284,7 @@ begin
 
             Add( 'void main(){' );
             Add( '  _ResultCol = texture( _Imager, _Sender.Tex );' );
-            Add( '  if ( _ResultCol.r == 0 ) discard;' );
+            Add( '  if ( _ResultCol.a == 0 ) discard;' );
             Add( '}' );
 
           EndUpdate;
