@@ -31,10 +31,6 @@ object Form1: TForm1
     TabOrder = 0
     object TabSheetV: TTabSheet
       Caption = 'View'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel1: TPanel
         AlignWithMargins = True
         Left = 5
