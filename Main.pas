@@ -16,8 +16,8 @@ uses
   LUX.GPU.OpenGL.Scener,
   LUX.GPU.OpenGL.Camera,
   LUX.GPU.OpenGL.Shaper,
-  LUX.GPU.OpenGL.Shaper.VCL,
-  LUX.GPU.OpenGL.Matery.VCL;
+  LUX.GPU.OpenGL.Shaper.Preset.VCL,
+  LUX.GPU.OpenGL.Matery.Imager.Preset;
 
 type
   TForm1 = class(TForm)
