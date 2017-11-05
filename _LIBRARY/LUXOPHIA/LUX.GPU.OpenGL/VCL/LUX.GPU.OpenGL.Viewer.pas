@@ -7,7 +7,7 @@ uses
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   LUX, LUX.D3, LUX.D4, LUX.M4,
   LUX.GPU.OpenGL,
-  LUX.GPU.OpenGL.VCL,
+  LUX.GPU.OpenGL.Window,
   LUX.GPU.OpenGL.Atom.Buffer.Unifor,
   LUX.GPU.OpenGL.Scener,
   LUX.GPU.OpenGL.Camera;
@@ -95,7 +95,7 @@ begin
           if Height < Width then _Viewer[ 0 ] := TSingleM4.Scale( Height / Width, 1, 1 )
                             else
           if Width < Height then _Viewer[ 0 ] := TSingleM4.Scale( 1, Width / Height, 1 )
-                            else _Viewer[ 0 ] := TSingleM4.Identify;
+                            else _Viewer[ 0 ] := TSingleM4.Identity;
 
           Self.Repaint;
      end;
