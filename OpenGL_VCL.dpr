@@ -51,7 +51,8 @@ uses
   LUX.GPU.OpenGL.Atom.Imager.D3.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Imager\D3\_VCL\LUX.GPU.OpenGL.Atom.Imager.D3.Preset.pas',
   LUX.GPU.OpenGL.Atom.Imager.D2.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Imager\D2\_VCL\LUX.GPU.OpenGL.Atom.Imager.D2.Preset.pas',
   LUX.GPU.OpenGL.Atom.Imager.D1.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Imager\D1\_VCL\LUX.GPU.OpenGL.Atom.Imager.D1.Preset.pas',
-  LUX.GPU.OpenGL.Matery.Imager.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Matery\Imager\_VCL\LUX.GPU.OpenGL.Matery.Imager.Preset.pas';
+  LUX.GPU.OpenGL.Matery.Imager.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Matery\Imager\_VCL\LUX.GPU.OpenGL.Matery.Imager.Preset.pas',
+  LUX.Data.Octree.Atom in '_LIBRARY\LUXOPHIA\LUX\» Data\LUX.Data.Octree.Atom.pas';
 
 {$R *.res}
 
