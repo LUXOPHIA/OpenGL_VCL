@@ -1,27 +1,28 @@
-﻿unit LUX.GPU.OpenGL.Window;
+﻿unit LUX.GPU.OpenGL.Render;
 
 interface //#################################################################### ■
 
-uses FMX.Forms,
-     LUX, LUX.GPU.OpenGL;
+uses System.UITypes,
+     Vcl.Graphics,
+     Winapi.Windows, Winapi.OpenGL, Winapi.OpenGLext,
+     LUX.GPU.OpenGL.Render_;
 
 type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【型】
 
      //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【レコード】
 
-     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% {RECORD}
-
      //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【クラス】
 
-     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TOepnGL
+     ///%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TGLRender
 
-     TOepnGL_FMX = class( TOpenGL )
+     TGLRender = class( TGL_Render )
      private
-       _Form :TCommonCustomForm;
      protected
-       procedure CreateWindow; override;
-       procedure DestroyWindow; override;
      public
+       ///// メソッド
+       procedure ExportToBMP( const BMP_:Vcl.Graphics.TBitmap );
+       function MakeScreenShot :Vcl.Graphics.TBitmap;
+       procedure SaveToFile( const FileName_:String );
      end;
 
 //const //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【定数】
@@ -32,44 +33,78 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 implementation //############################################################### ■
 
-uses FMX.Platform.Win,
-     Winapi.OpenGLext;
-
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【レコード】
 
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【クラス】
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TOepnGL
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TGLRender
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& private
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& protected
 
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& public
+
 /////////////////////////////////////////////////////////////////////// メソッド
 
-procedure TOepnGL_FMX.CreateWindow;
+procedure TGLRender.ExportToBMP( const BMP_:Vcl.Graphics.TBitmap );
+var
+   Cs :TArray<TAlphaColor>;
+   C, B :PAlphaColor;
+   S, Y :Integer;
 begin
-     _Form := TCommonCustomForm.Create( nil );
+     with BMP_ do
+     begin
+          PixelFormat := TPixelFormat.pf32bit;
 
-     _WND := WindowHandleToPlatform( _Form.Handle ).Wnd;
+          SetSize( _SizeX, _SizeY );
+
+          SetLength( Cs, Height * Width );
+
+          C := @Cs[ 0 ];
+
+          _Frame1.Bind;
+
+            glReadBuffer( GL_FRONT );
+            glReadPixels( 0, 0, Width, Height, GL_BGRA, GL_UNSIGNED_BYTE, C );
+
+          _Frame1.Unbind;
+
+          S := SizeOf( TAlphaColor ) * Width;
+
+          for Y := Height-1 downto 0 do
+          begin
+               B := Scanline[ Y ];
+
+               System.Move( C^, B^, S );
+
+               Inc( C, Width );
+          end;
+     end;
 end;
 
-procedure TOepnGL_FMX.DestroyWindow;
+function TGLRender.MakeScreenShot :Vcl.Graphics.TBitmap;
 begin
-     _Form.DisposeOf;
+     Result := Vcl.Graphics.TBitmap.Create;
+
+     ExportToBMP( Result );
 end;
 
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& public
+procedure TGLRender.SaveToFile( const FileName_:String );
+begin
+     with MakeScreenShot do
+     begin
+          SaveToFile( FileName_ );
+
+          DisposeOf;
+     end;
+end;
 
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【ルーチン】
 
 //############################################################################## □
 
 initialization //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 初期化
-
-     _OpenGL_ := TOepnGL_FMX.Create;
-
-     InitOpenGLext;
 
 finalization //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 最終化
 
