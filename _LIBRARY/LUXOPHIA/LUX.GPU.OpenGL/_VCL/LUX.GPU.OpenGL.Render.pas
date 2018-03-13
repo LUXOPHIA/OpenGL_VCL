@@ -47,6 +47,7 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        property Color   :TAlphaColorF read GetColor  write SetColor ;
        ///// メソッド
        procedure Render;
+       procedure ExportToBMP( const BMP_:Vcl.Graphics.TBitmap );
        function MakeScreenShot :Vcl.Graphics.TBitmap;
      end;
 
@@ -173,15 +174,13 @@ begin
      _FrameN.DrawToFramer( _Frame1 );
 end;
 
-function TGLRender.MakeScreenShot :Vcl.Graphics.TBitmap;
+procedure TGLRender.ExportToBMP( const BMP_:Vcl.Graphics.TBitmap );
 var
    Cs :TArray<TAlphaColor>;
    C, B :PAlphaColor;
    S, Y :Integer;
 begin
-     Result := Vcl.Graphics.TBitmap.Create;
-
-     with Result do
+     with BMP_ do
      begin
           PixelFormat := TPixelFormat.pf32bit;
 
@@ -209,6 +208,13 @@ begin
                Inc( C, Width );
           end;
      end;
+end;
+
+function TGLRender.MakeScreenShot :Vcl.Graphics.TBitmap;
+begin
+     Result := Vcl.Graphics.TBitmap.Create;
+
+     ExportToBMP( Result );
 end;
 
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【ルーチン】
