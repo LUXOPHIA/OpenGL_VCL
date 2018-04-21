@@ -65,8 +65,10 @@ uses
   LUX.Curve.T2.D3 in '_LIBRARY\LUXOPHIA\LUX\Curve\LUX.Curve.T2.D3.pas',
   LUX.Curve.T1.D1 in '_LIBRARY\LUXOPHIA\LUX\Curve\LUX.Curve.T1.D1.pas',
   LUX.Curve.T1.D2 in '_LIBRARY\LUXOPHIA\LUX\Curve\LUX.Curve.T1.D2.pas',
-  LUX.GPU.OpenGL.Render_ in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Render\LUX.GPU.OpenGL.Render_.pas',
-  LUX.GPU.OpenGL.Render in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Render\_VCL\LUX.GPU.OpenGL.Render.pas';
+  LUX.Data.Dictionary in '_LIBRARY\LUXOPHIA\LUX\Data\LUX.Data.Dictionary.pas',
+  LUX.GPU.OpenGL.Render in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\_VCL\LUX.GPU.OpenGL.Render.pas',
+  LUX.GPU.OpenGL.Render_ in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\LUX.GPU.OpenGL.Render_.pas',
+  LUX.GPU.OpenGL.Comput in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\LUX.GPU.OpenGL.Comput.pas';
 
 {$R *.res}
 

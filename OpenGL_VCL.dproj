@@ -195,8 +195,13 @@
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\Curve\LUX.Curve.T2.D3.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\Curve\LUX.Curve.T1.D1.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\Curve\LUX.Curve.T1.D2.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Render\LUX.GPU.OpenGL.Render_.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Render\_VCL\LUX.GPU.OpenGL.Render.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\Data\LUX.Data.Dictionary.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\_VCL\LUX.GPU.OpenGL.Render.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\LUX.GPU.OpenGL.Render_.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\LUX.GPU.OpenGL.Comput.pas"/>
+        <None Include="_DATA\ShaderV.glsl"/>
+        <None Include="_DATA\ShaderF.glsl"/>
+        <None Include="_DATA\ShaderG.glsl"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -219,9 +224,15 @@
                 </Source>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="Win64\Debug\OpenGL_VCL.rsm" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile LocalName="Win32\Debug\OpenGL_VCL.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>OpenGL_VCL.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="_DATA\ShaderG.glsl" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win64">
-                        <RemoteName>OpenGL_VCL.rsm</RemoteName>
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -231,9 +242,21 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Debug\OpenGL_VCL.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>OpenGL_VCL.exe</RemoteName>
+                <DeployFile LocalName="_DATA\ShaderF.glsl" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="_DATA\ShaderV.glsl" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Debug\OpenGL_VCL.rsm" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win64">
+                        <RemoteName>OpenGL_VCL.rsm</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
