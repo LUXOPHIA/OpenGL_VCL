@@ -212,19 +212,19 @@ begin
 
             with _VerBufP do
             begin
-                 Use;
+                 Bind;
                    glVertexPointer( 3, GL_FLOAT, 0, nil );
-                 Unuse;
+                 Unbind;
             end;
 
             with _VerBufC do
             begin
-                 Use;
+                 Bind;
                    glColorPointer( 4, GL_FLOAT, 0, nil );
-                 Unuse;
+                 Unbind;
             end;
 
-            _EleBuf.Use;
+            _EleBuf.Bind;
 
           Unbind;
      end;
