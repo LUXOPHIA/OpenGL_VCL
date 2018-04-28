@@ -22,12 +22,12 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        ///// アクセス
        function GetVerBufs :TGLPorterV;
        function GetUniBufs :TGLPorterU;
-       function GetTexturs :TGLPorterI;
+       function GetTexturs :TGLPorterT;
      {public}
        ///// プロパティ
        property VerBufs :TGLPorterV read GetVerBufs;
        property UniBufs :TGLPorterU read GetUniBufs;
-       property Texturs :TGLPorterI read GetTexturs;
+       property Texturs :TGLPorterT read GetTexturs;
      end;
 
      //-------------------------------------------------------------------------
@@ -37,12 +37,12 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
      protected
        _VerBufs :TGLPorterV;
        _UniBufs :TGLPorterU;
-       _Texturs :TGLPorterI;
+       _Texturs :TGLPorterT;
        _StoBufs :TGLPorterS;
        ///// アクセス
        function GetVerBufs :TGLPorterV;
        function GetUniBufs :TGLPorterU;
-       function GetTexturs :TGLPorterI;
+       function GetTexturs :TGLPorterT;
        function GetStoBufs :TGLPorterS;
        ///// イベント
        procedure DoOnLinked; override;
@@ -52,7 +52,7 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        ///// プロパティ
        property VerBufs :TGLPorterV read GetVerBufs;
        property UniBufs :TGLPorterU read GetUniBufs;
-       property Texturs :TGLPorterI read GetTexturs;
+       property Texturs :TGLPorterT read GetTexturs;
        property StoBufs :TGLPorterS read GetStoBufs;
        ///// メソッド
        procedure Attach( const Shader_:IGLShader ); override;
@@ -91,7 +91,7 @@ begin
      Result := _UniBufs;
 end;
 
-function TGLEngine.GetTexturs :TGLPorterI;
+function TGLEngine.GetTexturs :TGLPorterT;
 begin
      Result := _Texturs;
 end;
@@ -123,7 +123,7 @@ begin
 
      _VerBufs := TGLPorterV.Create( Self as IGLEngine );
      _UniBufs := TGLPorterU.Create( Self as IGLEngine );
-     _Texturs := TGLPorterI.Create( Self as IGLEngine );
+     _Texturs := TGLPorterT.Create( Self as IGLEngine );
      _StoBufs := TGLPorterS.Create( Self as IGLEngine );
 end;
 
