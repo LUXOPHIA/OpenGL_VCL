@@ -5,7 +5,6 @@ uses
   Main in 'Main.pas' {Form1},
   LUX.GPU.OpenGL.Viewer in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\_VCL\LUX.GPU.OpenGL.Viewer.pas' {GLViewer: TFrame},
   LUX.GPU.OpenGL.Window in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\_VCL\LUX.GPU.OpenGL.Window.pas',
-  LUX.GPU.OpenGL.Shaper.Preset.VCL in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\_VCL\LUX.GPU.OpenGL.Shaper.Preset.VCL.pas',
   LUX.DN in '_LIBRARY\LUXOPHIA\LUX\LUX.DN.pas',
   LUX.M2 in '_LIBRARY\LUXOPHIA\LUX\LUX.M2.pas',
   LUX.M3 in '_LIBRARY\LUXOPHIA\LUX\LUX.M3.pas',
@@ -69,7 +68,8 @@ uses
   LUX.GPU.OpenGL.Atom.Texture.D1 in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Texture\LUX.GPU.OpenGL.Atom.Texture.D1.pas',
   LUX.GPU.OpenGL.Atom.Texture.D1.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Texture\D1\_VCL\LUX.GPU.OpenGL.Atom.Texture.D1.Preset.pas',
   LUX.GPU.OpenGL.Atom.Texture.D2.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Texture\D2\_VCL\LUX.GPU.OpenGL.Atom.Texture.D2.Preset.pas',
-  LUX.GPU.OpenGL.Atom.Texture.D3.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Texture\D3\_VCL\LUX.GPU.OpenGL.Atom.Texture.D3.Preset.pas';
+  LUX.GPU.OpenGL.Atom.Texture.D3.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Texture\D3\_VCL\LUX.GPU.OpenGL.Atom.Texture.D3.Preset.pas',
+  LUX.GPU.OpenGL.Shaper.Preset.TGLText in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Shaper\Preset\_VCL\LUX.GPU.OpenGL.Shaper.Preset.TGLText.pas';
 
 {$R *.res}
 

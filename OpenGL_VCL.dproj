@@ -135,7 +135,6 @@
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\_VCL\LUX.GPU.OpenGL.Window.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\_VCL\LUX.GPU.OpenGL.Shaper.Preset.VCL.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.DN.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.M2.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.M3.pas"/>
@@ -200,6 +199,7 @@
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Texture\D1\_VCL\LUX.GPU.OpenGL.Atom.Texture.D1.Preset.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Texture\D2\_VCL\LUX.GPU.OpenGL.Atom.Texture.D2.Preset.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Texture\D3\_VCL\LUX.GPU.OpenGL.Atom.Texture.D3.Preset.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Shaper\Preset\_VCL\LUX.GPU.OpenGL.Shaper.Preset.TGLText.pas"/>
         <None Include="_DATA\ShaderV.glsl"/>
         <None Include="_DATA\ShaderF.glsl"/>
         <None Include="_DATA\ShaderG.glsl"/>
