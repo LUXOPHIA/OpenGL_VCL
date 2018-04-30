@@ -76,7 +76,8 @@ uses
   LUX.GPU.OpenGL.Atom.Textur.D1.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Textur\D1\_VCL\LUX.GPU.OpenGL.Atom.Textur.D1.Preset.pas',
   LUX.GPU.OpenGL.Atom.Textur.D2.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Textur\D2\_VCL\LUX.GPU.OpenGL.Atom.Textur.D2.Preset.pas',
   LUX.GPU.OpenGL.Atom.Textur.D3.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Textur\D3\_VCL\LUX.GPU.OpenGL.Atom.Textur.D3.Preset.pas',
-  LUX.GPU.OpenGL.Matery.Textur.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Matery\Textur\_VCL\LUX.GPU.OpenGL.Matery.Textur.Preset.pas';
+  LUX.GPU.OpenGL.Matery.Textur.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Matery\Textur\_VCL\LUX.GPU.OpenGL.Matery.Textur.Preset.pas',
+  LUX.GPU.OpenGL.Shaper.Preset.TGLText in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Shaper\Preset\_VCL\LUX.GPU.OpenGL.Shaper.Preset.TGLText.pas';
 
 {$R *.res}
 
