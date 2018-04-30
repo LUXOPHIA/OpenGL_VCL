@@ -86,12 +86,12 @@ var
    X, Y :Integer;
    C :TAlphaColorF;
 begin
-     Texels.PoinsX := BMP_.Width ;
-     Texels.PoinsY := BMP_.Height;
+     _Grider.PoinsX := BMP_.Width ;
+     _Grider.PoinsY := BMP_.Height;
 
-     for Y := 0 to Texels.PoinsY-1 do
+     for Y := 0 to _Grider.PoinsY-1 do
      begin
-          for X := 0 to Texels.PoinsX-1 do
+          for X := 0 to _Grider.PoinsX-1 do
           begin
                with TColorRec( BMP_.Canvas.Pixels[ X, Y ] ) do
                begin
@@ -101,7 +101,7 @@ begin
                     C.A := 1      ;
                end;
 
-               Texels[ X, Y ] := C;
+               _Grider[ X, Y ] := C;
           end;
      end;
 
@@ -112,13 +112,13 @@ procedure TGLPoiIma2D_TAlphaColorF.ExportTo( const BMP_:TBitmap );
 var
    X, Y :Integer;
 begin
-     BMP_.SetSize( Texels.PoinsX, Texels.PoinsY );
+     BMP_.SetSize( _Grider.PoinsX, _Grider.PoinsY );
 
-     for Y := 0 to Texels.PoinsY-1 do
+     for Y := 0 to _Grider.PoinsY-1 do
      begin
-          for X := 0 to Texels.PoinsX-1 do
+          for X := 0 to _Grider.PoinsX-1 do
           begin
-               BMP_.Canvas.Pixels[ X, Y ] := Texels[ X, Y ].ToAlphaColor;
+               BMP_.Canvas.Pixels[ X, Y ] := _Grider[ X, Y ].ToAlphaColor;
           end;
      end;
 end;
@@ -181,12 +181,12 @@ var
    X, Y :Integer;
    C :TAlphaColorF;
 begin
-     Texels.CellsX := BMP_.Width ;
-     Texels.CellsY := BMP_.Height;
+     _Grider.CellsX := BMP_.Width ;
+     _Grider.CellsY := BMP_.Height;
 
-     for Y := 0 to Texels.CellsY-1 do
+     for Y := 0 to _Grider.CellsY-1 do
      begin
-          for X := 0 to Texels.CellsX-1 do
+          for X := 0 to _Grider.CellsX-1 do
           begin
                with TColorRec( BMP_.Canvas.Pixels[ X, Y ] ) do
                begin
@@ -196,7 +196,7 @@ begin
                     C.A := 1      ;
                end;
 
-               Texels[ X, Y ] := C;
+               _Grider[ X, Y ] := C;
           end;
      end;
 
@@ -207,13 +207,13 @@ procedure TGLCelIma2D_TAlphaColorF.ExportTo( const BMP_:TBitmap );
 var
    X, Y :Integer;
 begin
-     BMP_.SetSize( Texels.CellsX, Texels.CellsY );
+     BMP_.SetSize( _Grider.CellsX, _Grider.CellsY );
 
-     for Y := 0 to Texels.CellsY-1 do
+     for Y := 0 to _Grider.CellsY-1 do
      begin
-          for X := 0 to Texels.CellsX-1 do
+          for X := 0 to _Grider.CellsX-1 do
           begin
-               BMP_.Canvas.Pixels[ X, Y ] := Texels[ X, Y ].ToAlphaColor;
+               BMP_.Canvas.Pixels[ X, Y ] := _Grider[ X, Y ].ToAlphaColor;
           end;
      end;
 end;
