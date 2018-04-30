@@ -208,7 +208,7 @@ begin
                end;
           end;
 
-          with Textur do
+          with Textur.Imager do
           begin
                LoadFromFile( '..\..\_DATA\Spherical_1024x1024.bmp' );
           end;
