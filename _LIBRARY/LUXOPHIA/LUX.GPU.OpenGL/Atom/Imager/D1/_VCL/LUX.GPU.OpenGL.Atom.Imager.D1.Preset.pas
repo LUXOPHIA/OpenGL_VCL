@@ -86,9 +86,9 @@ var
    X :Integer;
    C :TAlphaColorF;
 begin
-     Texels.PoinsX := BMP_.Width;
+     _Grider.PoinsX := BMP_.Width;
 
-     for X := 0 to Texels.PoinsX-1 do
+     for X := 0 to _Grider.PoinsX-1 do
      begin
           with TColorRec( BMP_.Canvas.Pixels[ X, 0 ] ) do
           begin
@@ -98,7 +98,7 @@ begin
                C.A := 1      ;
           end;
 
-          Texels[ X ] := C;
+          _Grider[ X ] := C;
      end;
 
      SendData;
@@ -108,11 +108,11 @@ procedure TGLPoiIma1D_TAlphaColorF.ExportTo( const BMP_:TBitmap );
 var
    X :Integer;
 begin
-     BMP_.SetSize( Texels.PoinsX, 1 );
+     BMP_.SetSize( _Grider.PoinsX, 1 );
 
-     for X := 0 to Texels.PoinsX-1 do
+     for X := 0 to _Grider.PoinsX-1 do
      begin
-          BMP_.Canvas.Pixels[ X, 0 ] := Texels[ X ].ToAlphaColor;
+          BMP_.Canvas.Pixels[ X, 0 ] := _Grider[ X ].ToAlphaColor;
      end;
 end;
 
@@ -174,9 +174,9 @@ var
    X :Integer;
    C :TAlphaColorF;
 begin
-     Texels.CellsX := BMP_.Width;
+     _Grider.CellsX := BMP_.Width;
 
-     for X := 0 to Texels.CellsX-1 do
+     for X := 0 to _Grider.CellsX-1 do
      begin
           with TColorRec( BMP_.Canvas.Pixels[ X, 0 ] ) do
           begin
@@ -186,7 +186,7 @@ begin
                C.A := 1      ;
           end;
 
-          Texels[ X ] := C;
+          _Grider[ X ] := C;
      end;
 
      SendData;
@@ -196,11 +196,11 @@ procedure TGLCelIma1D_TAlphaColorF.ExportTo( const BMP_:TBitmap );
 var
    X :Integer;
 begin
-     BMP_.SetSize( Texels.CellsX, 1 );
+     BMP_.SetSize( _Grider.CellsX, 1 );
 
-     for X := 0 to Texels.CellsX-1 do
+     for X := 0 to _Grider.CellsX-1 do
      begin
-          BMP_.Canvas.Pixels[ X, 0 ] := Texels[ X ].ToAlphaColor;
+          BMP_.Canvas.Pixels[ X, 0 ] := _Grider[ X ].ToAlphaColor;
      end;
 end;
 
