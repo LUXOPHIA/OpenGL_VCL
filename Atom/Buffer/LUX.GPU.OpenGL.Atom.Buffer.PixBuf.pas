@@ -25,8 +25,8 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        procedure UnbindRead;
        procedure BindWrite;
        procedure UnbindWrite;
-       procedure CopyFrom( const Imager_:TGLImager );
-       procedure CopyTo( const Imager_:TGLImager );
+       procedure CopyFrom( const Image_:IGLImager );
+       procedure CopyTo( const Image_:IGLImager );
      end;
 
      //-------------------------------------------------------------------------
@@ -45,8 +45,8 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        procedure UnbindRead;
        procedure BindWrite;
        procedure UnbindWrite;
-       procedure CopyFrom( const Imager_:TGLImager );
-       procedure CopyTo( const Imager_:TGLImager );
+       procedure CopyFrom( const Image_:IGLImager );
+       procedure CopyTo( const Image_:IGLImager );
      end;
 
 //const //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【定数】
@@ -122,20 +122,20 @@ end;
 
 //------------------------------------------------------------------------------
 
-procedure TGLPixBuf<_TItem_>.CopyFrom( const Imager_:TGLImager );
+procedure TGLPixBuf<_TItem_>.CopyFrom( const Image_:IGLImager );
 begin
      BindWrite;
 
-       Imager_.RecePixBuf;
+       Image_.RecePixBuf;
 
      UnbindWrite;
 end;
 
-procedure TGLPixBuf<_TItem_>.CopyTo( const Imager_:TGLImager );
+procedure TGLPixBuf<_TItem_>.CopyTo( const Image_:IGLImager );
 begin
      BindRead;
 
-       Imager_.SendPixBuf;
+       Image_.SendPixBuf;
 
      UnbindRead;
 end;
