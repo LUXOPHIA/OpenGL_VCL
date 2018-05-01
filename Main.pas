@@ -152,9 +152,9 @@ begin
 
      ///// バッファ
 
-     _VerBufP.Import( Ps );
-     _VerBufC.Import( Cs );
-     _EleBuf .Import( Es );
+     _VerBufP.CopyFrom( Ps );
+     _VerBufC.CopyFrom( Cs );
+     _EleBuf .CopyFrom( Es );
 
      ///// シェーダ
 
