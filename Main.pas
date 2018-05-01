@@ -190,7 +190,7 @@ begin
 
           with Textur do
           begin
-               LoadFromFile( '..\..\_DATA\Spherical_1024x1024.bmp' );
+               Imager.LoadFromFile( '..\..\_DATA\Spherical_1024x1024.bmp' );
           end;
      end;
 end;
