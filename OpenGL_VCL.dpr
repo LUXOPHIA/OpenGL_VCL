@@ -83,7 +83,14 @@ uses
   LUX.GPU.OpenGL.Atom.Textur.D1.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Textur\D1\LUX.GPU.OpenGL.Atom.Textur.D1.Preset.pas',
   LUX.GPU.OpenGL.Atom.Textur.D2.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Textur\D2\LUX.GPU.OpenGL.Atom.Textur.D2.Preset.pas',
   LUX.GPU.OpenGL.Atom.Textur.D3.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Textur\D3\LUX.GPU.OpenGL.Atom.Textur.D3.Preset.pas',
-  LUX.GPU.OpenGL.Atom.Imager.D1.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Imager\D1\_VCL\LUX.GPU.OpenGL.Atom.Imager.D1.Preset.pas';
+  LUX.GPU.OpenGL.Atom.Imager.D1.Preset in '_LIBRARY\LUXOPHIA\LUX.GPU.OpenGL\Atom\Imager\D1\_VCL\LUX.GPU.OpenGL.Atom.Imager.D1.Preset.pas',
+  LUX.Color.Grid.D1.Preset in '_LIBRARY\LUXOPHIA\LUX\Color\Grid\D1\_VCL\LUX.Color.Grid.D1.Preset.pas',
+  LUX.Color.Grid.D1 in '_LIBRARY\LUXOPHIA\LUX\Color\Grid\_VCL\LUX.Color.Grid.D1.pas',
+  LUX.Color.Grid.D2 in '_LIBRARY\LUXOPHIA\LUX\Color\Grid\_VCL\LUX.Color.Grid.D2.pas',
+  LUX.Color.Grid.D3 in '_LIBRARY\LUXOPHIA\LUX\Color\Grid\_VCL\LUX.Color.Grid.D3.pas',
+  LUX.Color.Format.HDR in '_LIBRARY\LUXOPHIA\LUX\Color\Format\LUX.Color.Format.HDR.pas',
+  LUX.Color in '_LIBRARY\LUXOPHIA\LUX\Color\LUX.Color.pas',
+  LUX.Color.Grid.D2.Preset in '_LIBRARY\LUXOPHIA\LUX\Color\Grid\D2\_VCL\LUX.Color.Grid.D2.Preset.pas';
 
 {$R *.res}
 
