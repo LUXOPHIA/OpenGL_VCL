@@ -210,7 +210,7 @@ begin
 
           with Textur do
           begin
-               Imager.LoadFromFile( '..\..\_DATA\Spherical_1024x1024.bmp' );
+               Imager.LoadFromFileHDR( '..\..\_DATA\Luxo-Jr_2000x1000.hdr' );
           end;
      end;
 end;

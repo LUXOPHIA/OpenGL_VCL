@@ -18,6 +18,28 @@ vec2 VecToSky( vec4 Vector_ )
     return Result;
 }
 
+//------------------------------------------------------------------------------
+
+vec3 ToneMap( in vec3 Color, in float White )
+{
+  return clamp( Color * ( 1 + Color / White ) / ( 1 + Color ), 0, 1 );
+}
+
+//------------------------------------------------------------------------------
+
+vec3 GammaCorrect( in vec3 Color, in float Gamma )
+{
+  vec3 Result;
+
+  float G = 1 / Gamma;
+
+  Result.r = pow( Color.r, G );
+  Result.g = pow( Color.g, G );
+  Result.b = pow( Color.b, G );
+
+  return Result;
+}
+
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%【共通定数】
 
 layout( std140 ) uniform TViewerScal
@@ -62,11 +84,15 @@ out vec4 _ResultCol;
 
 void main()
 {
-  vec4 C = _CameraPose * vec4( 0, 0, 0, 1 );
+  vec4 C = _CameraPose[ 3 ];
   vec4 V = normalize( _Sender.Pos - C );
   vec4 R = reflect( V, normalize( _Sender.Nor ) );
 
-  _ResultCol = texture( _Textur, VecToSky( R ) );
+  vec3 C0 = texture( _Textur, VecToSky( R ) ).rgb;
+  vec3 C1 = ToneMap( C0, 1 );
+  vec3 C2 = GammaCorrect( C1, 2.2 );
+
+  _ResultCol = vec4( C2, 1 );
 }
 
 //############################################################################## ■
